@@ -1,5 +1,5 @@
 # HeaterMeter smoker controller component for Home Assistant
-HeaterMeter smoker controller integration for home assistant
+HeaterMeter smoker controller integration for HA.
 
 Changes from fancygaphtrn version:
 - Changed "heatmeter" name to heatermeter.
