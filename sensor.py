@@ -1,14 +1,6 @@
 """
 Support for reading HeaterMeter data. See https://store.heatermeter.com/
 
-configuration.yaml
-
-heatermeter:
-    host: smoker.lan
-    port: 80
-    username: PORTAL_LOGIN
-    password: PORTAL_PASSWORD
-    scan_interval: 2
 """
 import logging
 import requests
@@ -21,7 +13,7 @@ from homeassistant.helpers.config_validation import (  # noqa
     PLATFORM_SCHEMA, PLATFORM_SCHEMA_BASE)
 import homeassistant.helpers.config_validation as cv
 from homeassistant.const import (
-        CONF_USERNAME, CONF_PASSWORD, CONF_HOST, CONF_PORT,
+        CONF_USERNAME, CONF_PASSWORD, CONF_HOST, CONF_PORT, CONF_API_KEY, CONF_SCAN_INTERVAL, 
         CONF_RESOURCES,TEMP_CELSIUS
     )
 from homeassistant.util import Throttle
@@ -34,7 +26,7 @@ ENTITY_ID_FORMAT = DOMAIN + '.{}'
 
 BASE_URL = 'http://{0}:{1}{2}'
 SCAN_INTERVAL = timedelta(seconds=2)
-MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=2)
+MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=1)
 
 SENSOR_TYPES = {
     'setpoint': ['Setpoint', TEMP_CELSIUS, 'mdi:thermometer'],
@@ -101,7 +93,7 @@ class HeaterMeterData(object):
         dataurl = BASE_URL.format(
                     self._host, self._port,
                     '/luci/lm/hmstatus'
-        )
+        ) #new API /luci/lm/api/status
         try:
             response = requests.get(dataurl, timeout=5)
             self.data = response.json()
@@ -150,8 +142,8 @@ class HeaterMeterSensor(Entity):
     def update(self):
         """Get the latest data and use it to update our sensor state."""
         self.data.update()
-        _LOGGER.debug("HeaterMeter: SensorData = %s", self.data.data)
-        _LOGGER.debug("HeaterMeter: type = %s", self.type)
+        #_LOGGER.debug("HeaterMeter: SensorData = %s", self.data.data)
+        #_LOGGER.debug("HeaterMeter: type = %s", self.type)
         
         if self.data.data == None:
             self._state = "Unknown"

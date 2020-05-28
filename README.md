@@ -1,8 +1,10 @@
 # HeaterMeter smoker controller component for Home Assistant
 HeaterMeter smoker controller integration for home assistant
+
 Changes from fancygaphtrn version:
 - Changed "heatmeter" name to heatermeter.
 - Changed and normalized F' to C'
+- Supports new API for HeaterMeter V14
 
 ### Getting started
 
@@ -18,6 +20,8 @@ heatermeter:
   port: 80
   username: PORTAL_LOGIN
   password: PORTAL_PASSWORD
+  scan_interval: time in sec (Not implemented yet)
+  api_key: api key from HeaterMeter API
 
 input_number:
   setpoint:
@@ -57,6 +61,7 @@ ui-lovelace.yaml
           - heatermeter.probe0_temperature
           - heatermeter.probe1_temperature
           - heatermeter.probe2_temperature
+          - heatermeter.probe3_temperature
       - type: history-graph
         hours_to_show: 12
         refresh_interval: 10
@@ -65,6 +70,7 @@ ui-lovelace.yaml
           - heatermeter.probe0_temperature
           - heatermeter.probe1_temperature
           - heatermeter.probe2_temperature
+          - heatermeter.probe3_temperature
 
 ```
 
