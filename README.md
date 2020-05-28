@@ -1,16 +1,19 @@
-# HeaterMeter smoker controller
-HeaterMeter smoker controller custom sensor for home assistant
+# HeaterMeter smoker controller component for Home Assistant
+HeaterMeter smoker controller integration for home assistant
+Changes from fancygaphtrn version:
+- Changed "heatmeter" name to heatermeter.
+- Changed and normalized F' to C'
 
 ### Getting started
 
-* Add sensor.py, __init__.py, services.yaml and manifest.json to the Home Assistant config\custom_components\heaterheter directory
+* Add sensor.py, __init__.py, services.yaml and manifest.json to the Home Assistant config\custom_components\heatermeter directory
 
 #### Home Assistant Example
 
 ```
 configuration.yaml
 
-heaterheter:
+heatermeter:
   host: <Hostname of HeaterMeter>
   port: 80
   username: PORTAL_LOGIN
@@ -34,7 +37,7 @@ automation.yaml
   - entity_id: input_number.setpoint
     platform: state
   action:
-  - service: heaterheter.set_temperature
+  - service: heatermeter.set_temperature
     data_template:
       temperature: '{{ states.input_number.setpoint.state|int }}'
 ```
@@ -48,20 +51,20 @@ ui-lovelace.yaml
         show_header_toggle: false
         entities:
           - input_number.setpoint
-          - heaterheter.setpoint
-          - heaterheter.lid
-          - heaterheter.fan
-          - heaterheter.probe0_temperature
-          - heaterheter.probe1_temperature
-          - heaterheter.probe2_temperature
+          - heatermeter.setpoint
+          - heatermeter.lid
+          - heatermeter.fan
+          - heatermeter.probe0_temperature
+          - heatermeter.probe1_temperature
+          - heatermeter.probe2_temperature
       - type: history-graph
         hours_to_show: 12
         refresh_interval: 10
         entities:
-          - heaterheter.setpoint
-          - heaterheter.probe0_temperature
-          - heaterheter.probe1_temperature
-          - heaterheter.probe2_temperature
+          - heatermeter.setpoint
+          - heatermeter.probe0_temperature
+          - heatermeter.probe1_temperature
+          - heatermeter.probe2_temperature
 
 ```
 

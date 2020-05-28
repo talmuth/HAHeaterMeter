@@ -1,9 +1,9 @@
 """
-Support for reading Heatmeter data. See https://store.heatermeter.com/
+Support for reading HeaterMeter data. See https://store.heatermeter.com/
 
 configuration.yaml
 
-heatmeter:
+heatermeter:
     host: smoker.lan
     port: 80
     username: PORTAL_LOGIN
@@ -18,7 +18,7 @@ from homeassistant.const import (
         CONF_USERNAME, CONF_PASSWORD, CONF_HOST, CONF_PORT
     )
 
-DOMAIN = 'heatmeter'
+DOMAIN = 'heatermeter'
 
 CONFIG_SCHEMA = vol.Schema({
     DOMAIN: vol.Schema({
@@ -32,13 +32,13 @@ CONFIG_SCHEMA = vol.Schema({
 ADMIN_URL = 'http://{0}:{1}/luci/admin/lm'
 SET_URL = 'http://{0}:{1}/luci/;{2}/admin/lm/set?sp={3}'
 TEMPERATURE_NAME = 'temperature'
-TEMPERATURE_DEFAULT = '170'
+TEMPERATURE_DEFAULT = '110'
 _LOGGER = logging.getLogger(__name__)
 
 
 def setup(hass, config):
     """Set up is called when Home Assistant is loading our component."""
-    _LOGGER.debug("Heatmeter init.py: config = %s", config[DOMAIN])
+    _LOGGER.debug("HeaterMeter init.py: config = %s", config[DOMAIN])
 
     hass.data[DOMAIN] = {}
     hass.data[DOMAIN][CONF_HOST] = config[DOMAIN][CONF_HOST]
@@ -46,32 +46,32 @@ def setup(hass, config):
     hass.data[DOMAIN][CONF_USERNAME] = config[DOMAIN][CONF_USERNAME]
     hass.data[DOMAIN][CONF_PASSWORD] = config[DOMAIN][CONF_PASSWORD]
 
-    _LOGGER.debug("Heatmeter init.py: hass.data = %s", hass.data[DOMAIN])
+    _LOGGER.debug("HeaterMeter init.py: hass.data = %s", hass.data[DOMAIN])
 
 
     def handle_setpoint(call):
         """Handle the service call."""
-        _LOGGER.debug("Heatmeter init.py: call = %s", call)
+        _LOGGER.debug("HeaterMeter init.py: call = %s", call)
  
         temp = call.data.get(TEMPERATURE_NAME, TEMPERATURE_DEFAULT)
-        _LOGGER.debug("Heatmeter init.py: temp = %s", temp)
+        _LOGGER.debug("HeaterMeter init.py: temp = %s", temp)
 
 
         try:
             data = {'username':hass.data[DOMAIN][CONF_USERNAME], 
                 'password':hass.data[DOMAIN][CONF_PASSWORD]}
 
-            _LOGGER.debug("Heatmeter handle_setpoint: data = %s", data)
+            _LOGGER.debug("HeaterMeter handle_setpoint: data = %s", data)
 
             url = ADMIN_URL.format(
                     hass.data[DOMAIN][CONF_HOST], hass.data[DOMAIN][CONF_PORT]
             )
-            _LOGGER.debug("Heatmeter handle_setpoint: ADMIN_URL = %s", url)
+            _LOGGER.debug("HeaterMeter handle_setpoint: ADMIN_URL = %s", url)
             
             r = requests.post(url, data = data)
             if r.status_code == 200:
-                _LOGGER.debug("Heatmeter handle_setpoint Status: %s" % (r.text))
-                _LOGGER.debug("Heatmeter handle_setpoint headers: %s" % (r.headers))
+                _LOGGER.debug("HeaterMeter handle_setpoint Status: %s" % (r.text))
+                _LOGGER.debug("HeaterMeter handle_setpoint headers: %s" % (r.headers))
     
                 tokens = r.headers['set-cookie'].split(';')
                 headers = {'Cookie': tokens[0] +';'}
@@ -79,14 +79,14 @@ def setup(hass, config):
                 url = SET_URL.format(
                         hass.data[DOMAIN][CONF_HOST], hass.data[DOMAIN][CONF_PORT], tokens[2] , temp
                 )
-                _LOGGER.debug("Heatmeter handle_setpoint: SET_URL = %s", url)
+                _LOGGER.debug("HeaterMeter handle_setpoint: SET_URL = %s", url)
                 #url = 'http://smoker.lan/luci/;'+ tokens[2] + '/admin/lm/set?sp=' + temp
                 r = requests.get(url, headers=headers)
                 if r.status_code == 200:
-                    _LOGGER.info("Heatmeter handle_setpoint Setpoint updated: %s" % (temp))
+                    _LOGGER.info("HeaterMeter handle_setpoint Setpoint updated: %s" % (temp))
 
         except requests.exceptions.RequestException as e:  # This is the correct syntax
-            _LOGGER.error("Heatmeter handle_setpoint Post Connection error %s" % (e))
+            _LOGGER.error("HeaterMeter handle_setpoint Post Connection error %s" % (e))
 
     hass.services.register(DOMAIN, 'set_temperature', handle_setpoint)
 

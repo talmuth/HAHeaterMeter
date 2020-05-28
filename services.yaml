@@ -3,4 +3,4 @@ set_temperature:
   fields:
     temperature: 
       description: 'New setpoint temperature'
-      example: 'temperature: 170'
+      example: 'temperature: 110'
