@@ -2,7 +2,7 @@
 HeaterMeter smoker controller integration for HA.
 
 Changes from idomp version:
-- Changed and normalized C' back to °F'
+- Changed and normalized C' back to °F', (Must find a way to make this a configuration option).
 - Removed username and password configuration options, use api_key instead.
 - Added an Alarm sensor that changes to 'on' when any probe's Alarm/Ring value is set to a non-null value.
 - Changed the 'lid' icon to mdi:room-service because it looks like more like a BBQ lid.
@@ -43,14 +43,7 @@ input_number:
 ```
 automation.yaml
 
-- alias: Update HeaterMeter setpoint
-  trigger:
-  - entity_id: input_number.setpoint
-    platform: state
-  action:
-  - service: heatermeter.set_temperature
-    data_template:
-      temperature: '{{ states.input_number.setpoint.state|int }}'
+
 ```
 ```
 scripts.yaml
