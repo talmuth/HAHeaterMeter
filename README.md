@@ -47,6 +47,24 @@ input_number:
 ```
 automation.yaml
 
+- id: 'heatermeter_push_notification'
+  alias: HeaterMeter Push Notification
+  description: ''
+  trigger:
+  - entity_id: heatermeter.alarm
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      data:
+        actions:
+        - action: URI
+          title: Go to Card
+          uri: /lovelace/heater-meter
+      message: HeaterMeter Alarm
+    service: notify.mobile_app_<YourPhone>
+  mode: single
 
 ```
 ```
