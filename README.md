@@ -5,7 +5,7 @@ Changes from idomp version:
 - Changed and normalized C' back to °F', (Must find a way to make this a configuration option).
 - Removed username and password configuration options, use api_key instead.
 - Added an Alarm sensor that changes to 'on' when any probe's Alarm/Ring value is set to a non-null value.
-- Changed the 'lid' icon to mdi:room-service because it looks like more like a BBQ lid.
+- Changed the 'lid' icon to mdi:room-service because it looks more like a BBQ lid.
 - Changed the Input_Number's icon to mdi:target.
 - Changed the default heatermeter.set_temperature to 225.
 - Modified the script.yaml by removing the trigger. (Set Point will be set manually in the Lovelace card).
