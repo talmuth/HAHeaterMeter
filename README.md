@@ -9,10 +9,14 @@ Changes from idomp version:
 - Changed the Input_Number's icon to mdi:target.
 - Changed the default heatermeter.set_temperature to 225.
 - Modified the script.yaml by removing the trigger. (Set Point will be set manually in the Lovelace card).
-- Added an Automation.yaml to send push notifications w/ actions to mobile app.
 - Lovelace Card Updates:
   * Now includes a card for setting the Set Point with a slider and 'Set' button.
   * Added history graph for the fan
+
+ToDo:
+- Added an Automation.yaml to send push notifications w/ actions to mobile app.
+- Implement scan_interval.
+- Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option or read it from the HeaterMeter config.
 
 ### Getting started
 
