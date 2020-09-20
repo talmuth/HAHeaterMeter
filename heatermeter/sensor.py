@@ -1,5 +1,5 @@
 """
-Support for reading HeaterMeter data. See https://store.heatermeter.com/
+Support for reading HeaterMeter data. See https://github.com/CapnBry/HeaterMeter/wiki/Accessing-Raw-Data-Remotely
 
 """
 import logging
@@ -13,8 +13,8 @@ from homeassistant.helpers.config_validation import (  # noqa
     PLATFORM_SCHEMA, PLATFORM_SCHEMA_BASE)
 import homeassistant.helpers.config_validation as cv
 from homeassistant.const import (
-        CONF_USERNAME, CONF_PASSWORD, CONF_HOST, CONF_PORT, CONF_API_KEY, CONF_SCAN_INTERVAL, 
-        CONF_RESOURCES,TEMP_CELSIUS
+        CONF_HOST, CONF_PORT, CONF_API_KEY, CONF_SCAN_INTERVAL, 
+        CONF_RESOURCES,TEMP_FAHRENHEIT
     )
 from homeassistant.util import Throttle
 from homeassistant.helpers.entity import Entity
@@ -29,13 +29,14 @@ SCAN_INTERVAL = timedelta(seconds=2)
 MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=1)
 
 SENSOR_TYPES = {
-    'setpoint': ['Setpoint', TEMP_CELSIUS, 'mdi:thermometer'],
-    'lid': ['Lid', '', 'mdi:fridge'],
+    'setpoint': ['Setpoint', TEMP_FAHRENHEIT, 'mdi:thermometer'],
+    'lid': ['Lid', '', 'mdi:room-service'],
     'fan': ['Fan', '%', 'mdi:fan'],
-    'probe0_temperature': ['Pit Temperature', TEMP_CELSIUS, 'mdi:thermometer'],
-    'probe1_temperature': ['Probe1 Temperature', TEMP_CELSIUS, 'mdi:thermometer'],
-    'probe2_temperature': ['Probe2 Temperature', TEMP_CELSIUS, 'mdi:thermometer'],
-    'probe3_temperature': ['Probe3 Temperature', TEMP_CELSIUS, 'mdi:thermometer']
+    'alarm': ['Alarm', '', 'mdi:alert'],
+    'probe0_temperature': ['Pit Temperature', TEMP_FAHRENHEIT, 'mdi:thermometer'],
+    'probe1_temperature': ['Probe1 Temperature', TEMP_FAHRENHEIT, 'mdi:thermometer'],
+    'probe2_temperature': ['Probe2 Temperature', TEMP_FAHRENHEIT, 'mdi:thermometer'],
+    'probe3_temperature': ['Probe3 Temperature', TEMP_FAHRENHEIT, 'mdi:thermometer']
 }
 
 def setup_platform(hass, config, add_entities, discovery_info=None):
@@ -48,11 +49,9 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
        
     host = hass.data[DOMAIN][CONF_HOST]
     port = hass.data[DOMAIN][CONF_PORT]
-    username = hass.data[DOMAIN][CONF_USERNAME]
-    password = hass.data[DOMAIN][CONF_PASSWORD]
     
     try:
-        data = HeaterMeterData(host, port, username, password)
+        data = HeaterMeterData(host, port)
     except RunTimeError:
         _LOGGER.error("HeaterMeter: Unable to connect fetch data from HeaterMeter %s:%s",
                       host, port)
@@ -73,12 +72,10 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 class HeaterMeterData(object):
     """Representation of a HeaterMeter."""
 
-    def __init__(self, host, port, username, password):
+    def __init__(self, host, port):
         """Initialize the HeaterMeter."""
         self._host = host
         self._port = port
-        self._username = username
-        self._password = password
         self.data = None
         self._backoff = dt_util.utcnow()
 
@@ -93,7 +90,7 @@ class HeaterMeterData(object):
         dataurl = BASE_URL.format(
                     self._host, self._port,
                     '/luci/lm/hmstatus'
-        ) #new API /luci/lm/api/status
+        )   #new API /luci/lm/api/status
         try:
             response = requests.get(dataurl, timeout=5)
             self.data = response.json()
@@ -157,6 +154,17 @@ class HeaterMeterSensor(Entity):
                     self._state =  "Closed"
                 else:
                     self._state =  "Open"
+            if self.type == 'alarm':
+                if self.data.data["temps"][0]["a"]["r"] is not None:
+                    self._state = "on"
+                elif self.data.data["temps"][1]["a"]["r"] is not None:
+                    self._state = "on"
+                elif self.data.data["temps"][2]["a"]["r"] is not None:
+                    self._state = "on"
+                elif self.data.data["temps"][3]["a"]["r"] is not None:
+                    self._state = "on"
+                else:
+                    self._state = "off"
             if self.type == 'probe0_temperature':
                 self._state = self.data.data["temps"][0]["c"]
                 self._name = self.data.data["temps"][0]["n"]

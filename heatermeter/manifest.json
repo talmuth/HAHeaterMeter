@@ -1,7 +1,7 @@
 {
-  "domain": "heaterheter",
-  "name": "HeaterMeter BBQ controller sensor",
-  "documentation": "https://github.com/idomp/HAHeaterMeter",
+  "domain": "heatermeter",
+  "name": "HeaterMeter BBQ controller integration for Home Assistant",
+  "documentation": "https://github.com/ledhed-jgh/HAHeaterMeter",
   "dependencies": [],
   "codeowners": [],
   "requirements": []
