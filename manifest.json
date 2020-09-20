@@ -1,8 +1,0 @@
-{
-  "domain": "heaterheter",
-  "name": "HeaterMeter BBQ controller sensor",
-  "documentation": "https://github.com/idomp/HAHeaterMeter",
-  "dependencies": [],
-  "codeowners": [],
-  "requirements": []
-}
