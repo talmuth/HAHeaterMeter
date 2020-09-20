@@ -15,10 +15,10 @@ Changes from idomp version:
   * Added history graph for the fan
 
 ToDo:
-- Implement scan_interval.
-- Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option or read it from the HeaterMeter config.
-- Discovery
-- More Controls (individual probe Hi/Lo alarms)
+- [ ] Implement scan_interval.
+- [ ] Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option. ~~or read it from the HeaterMeter config.~~
+- [ ] Home Assistant Discovery
+- [ ] More Controls (individual probe Hi/Lo alarms)
 
 ### Getting started
 
@@ -33,7 +33,7 @@ heatermeter:
   api_key: <API Key from HeaterMeter>
   host: <Hostname or IP of HeaterMeter>
   port: 80
-  scan_interval: time in sec (Not implemented yet)
+  scan_interval: <Time in seconds>  #(Not implemented yet)
 
 input_number:
   setpoint:
