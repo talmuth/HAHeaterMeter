@@ -5,6 +5,7 @@ Changes from idomp version:
 - Changed and normalized C' back to °F', (Must find a way to make this a configuration option).
 - Removed username and password configuration options, use api_key instead.
 - Added an Alarm sensor that changes to 'on' when any probe's Alarm/Ring value is set to a non-null value.
+- Added an Automation example to send push notifications w/ action to mobile app.
 - Changed the 'lid' icon to mdi:room-service because it looks more like a BBQ lid.
 - Changed the Input_Number's icon to mdi:target.
 - Changed the default heatermeter.set_temperature to 225.
@@ -14,7 +15,6 @@ Changes from idomp version:
   * Added history graph for the fan
 
 ToDo:
-- Added an Automation.yaml to send push notifications w/ actions to mobile app.
 - Implement scan_interval.
 - Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option or read it from the HeaterMeter config.
 - Discovery
@@ -121,6 +121,22 @@ ui-lovelace.yaml
         refresh_interval: 10
         type: history-graph
 ```
+
+## :camera: Screenshots
+
+### Lovelace Cards
+
+![Lovelace Cards](docs/lovelace-cards.png)
+
+### HeaterMeter Reference Image
+![HeaterMeter Reference](docs/heatermeter-reference.png)
+
+### Mobile App Notification
+![Mobile App Notification](docs/mobile-app-notification.png)
+
+### Mobile App Cards
+![Mobile App Cards](docs/mobile-app-card-view.png)
+
 
 ### References
 Support for reading HeaterMeter data. See https://github.com/CapnBry/HeaterMeter/wiki/Accessing-Raw-Data-Remotely
