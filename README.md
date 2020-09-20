@@ -17,6 +17,8 @@ ToDo:
 - Added an Automation.yaml to send push notifications w/ actions to mobile app.
 - Implement scan_interval.
 - Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option or read it from the HeaterMeter config.
+- Discovery
+- More Controls (individual probe Hi/Lo alarms)
 
 ### Getting started
 
