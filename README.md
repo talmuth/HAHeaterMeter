@@ -20,7 +20,7 @@ ToDo:
 
 ### Getting started
 
-* Add sensor.py, __init__.py, services.yaml and manifest.json to the Home Assistant config\custom_components\heatermeter directory
+* Add sensor.py, __init__.py, services.yaml and manifest.json to the Home Assistant config/custom_components/heatermeter directory
 
 #### Home Assistant Example
 
