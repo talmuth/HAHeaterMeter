@@ -12,7 +12,7 @@ Changes from idomp version:
 - Modified the script.yaml by removing the trigger. (Set Point will be set manually in the Lovelace card).
 - Lovelace Card Updates:
   * Now includes a card for setting the Set Point with a slider and 'Set' button.
-  * Added history graph for the fan
+  * Added history graph for the fan.
 
 ToDo:
 - [ ] Implement scan_interval.
