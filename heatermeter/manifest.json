@@ -4,5 +4,8 @@
   "documentation": "https://github.com/ledhed-jgh/HAHeaterMeter",
   "dependencies": [],
   "codeowners": [],
-  "requirements": []
+  "requirements": [],
+  "zeroconf": [
+    {"type":"_http._tcp.local.","name":"HeaterMeter BBQ Controller*"}
+   ]
 }
