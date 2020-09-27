@@ -14,7 +14,7 @@ import requests
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 from homeassistant.const import (
-        CONF_HOST, CONF_PORT, CONF_TEMPERATURE_UNIT, CONF_UNIT_SYSTEM, CONF_API_KEY, CONF_SCAN_INTERVAL
+        CONF_HOST, CONF_PORT, CONF_API_KEY, CONF_SCAN_INTERVAL
     )
 
 DOMAIN = 'heatermeter'
@@ -23,7 +23,6 @@ CONFIG_SCHEMA = vol.Schema({
     DOMAIN: vol.Schema({
         vol.Required(CONF_HOST): cv.string,
         vol.Required(CONF_API_KEY): cv.string,
-        vol.Optional(CONF_TEMPERATURE_UNIT, default="F"): cv.string,
         vol.Optional(CONF_PORT, default=80): cv.positive_int,
         vol.Optional(CONF_SCAN_INTERVAL, default=10): cv.positive_int
     })
@@ -43,7 +42,6 @@ def setup(hass, config):
     hass.data[DOMAIN] = {}
     hass.data[DOMAIN][CONF_HOST]                = config[DOMAIN][CONF_HOST]
     hass.data[DOMAIN][CONF_PORT]                = config[DOMAIN][CONF_PORT]
-    #hass.data[DOMAIN][CONF_TEMPERATURE_UNIT]    = config[DOMAIN][CONF_TEMPERATURE_UNIT]
     hass.data[DOMAIN][CONF_API_KEY]             = config[DOMAIN][CONF_API_KEY]
     hass.data[DOMAIN][CONF_SCAN_INTERVAL]       = config[DOMAIN][CONF_SCAN_INTERVAL]
 

@@ -2,8 +2,7 @@
 HeaterMeter smoker controller integration for HA.
 
 Changes from idomp version:
-- Temperature Units set by global Unit System setting (metric = °C, Imperial = °F)
-- ~~Changed and normalized C' back to °F', (Must find a way to make this a configuration option).~~
+- Temperature units automatically set based on 'Unit System' setting in 'Configuration\General'.
 - Removed username and password configuration options, use api_key instead.
 - Added an Alarm sensor that changes to 'on' when any probe's Alarm/Ring value is set to a non-null value.
 - Added an Automation example to send push notifications w/ action to mobile app.
@@ -17,7 +16,7 @@ Changes from idomp version:
 
 ToDo:
 - [ ] Implement scan_interval.
-- [X] ~~ Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option. or read it from the HeaterMeter config.~~
+- [X] Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option. or read it from the HeaterMeter config.
 - [ ] Home Assistant Discovery
 - [ ] More Controls (individual probe Hi/Lo alarms)
 
