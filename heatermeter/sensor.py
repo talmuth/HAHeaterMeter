@@ -14,7 +14,7 @@ from homeassistant.helpers.config_validation import (  # noqa
 import homeassistant.helpers.config_validation as cv
 from homeassistant.const import (
         CONF_HOST, CONF_PORT, CONF_API_KEY, CONF_SCAN_INTERVAL, 
-        CONF_RESOURCES,TEMP_FAHRENHEIT
+        CONF_RESOURCES, TEMP_CELSIUS, TEMP_FAHRENHEIT
     )
 from homeassistant.util import Throttle
 from homeassistant.helpers.entity import Entity
@@ -29,14 +29,14 @@ SCAN_INTERVAL = timedelta(seconds=2)
 MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=1)
 
 SENSOR_TYPES = {
-    'setpoint': ['Setpoint', TEMP_FAHRENHEIT, 'mdi:thermometer'],
+    'setpoint': ['Setpoint', '', 'mdi:thermometer'],
     'lid': ['Lid', '', 'mdi:room-service'],
     'fan': ['Fan', '%', 'mdi:fan'],
     'alarm': ['Alarm', '', 'mdi:alert'],
-    'probe0_temperature': ['Pit Temperature', TEMP_FAHRENHEIT, 'mdi:thermometer'],
-    'probe1_temperature': ['Probe1 Temperature', TEMP_FAHRENHEIT, 'mdi:thermometer'],
-    'probe2_temperature': ['Probe2 Temperature', TEMP_FAHRENHEIT, 'mdi:thermometer'],
-    'probe3_temperature': ['Probe3 Temperature', TEMP_FAHRENHEIT, 'mdi:thermometer']
+    'probe0_temperature': ['Pit Temperature', '', 'mdi:thermometer'],
+    'probe1_temperature': ['Probe1 Temperature', '', 'mdi:thermometer'],
+    'probe2_temperature': ['Probe2 Temperature', '', 'mdi:thermometer'],
+    'probe3_temperature': ['Probe3 Temperature', '', 'mdi:thermometer']
 }
 
 def setup_platform(hass, config, add_entities, discovery_info=None):
@@ -49,7 +49,20 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
        
     host = hass.data[DOMAIN][CONF_HOST]
     port = hass.data[DOMAIN][CONF_PORT]
-    
+    units = hass.config.units.name
+
+    TEMP_UNITS = TEMP_CELSIUS
+
+    if units.lower() == "imperial":
+        TEMP_UNITS = TEMP_FAHRENHEIT
+
+    # Set Temperature Units based on global system settings
+    SENSOR_TYPES['setpoint'][1]             = TEMP_UNITS
+    SENSOR_TYPES['probe0_temperature'][1]   = TEMP_UNITS
+    SENSOR_TYPES['probe1_temperature'][1]   = TEMP_UNITS
+    SENSOR_TYPES['probe2_temperature'][1]   = TEMP_UNITS
+    SENSOR_TYPES['probe3_temperature'][1]   = TEMP_UNITS
+
     try:
         data = HeaterMeterData(host, port)
     except RunTimeError:
@@ -61,7 +74,6 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 
     for resource in SENSOR_TYPES:
         sensor_type = resource.lower()
-
         entities.append(HeaterMeterSensor(data, sensor_type))
     
     _LOGGER.debug("HeaterMeter: entities = %s", entities)
