@@ -24,7 +24,7 @@ ToDo:
 
 * Copy the 'heatermeter' folder to the Home Assistant config/custom_components/ directory.
 
-#### Home Assistant Example
+#### Home Assistant Examples
 
 ```
 configuration.yaml
