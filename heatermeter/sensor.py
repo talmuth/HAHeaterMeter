@@ -211,14 +211,14 @@ class HeaterMeterSensor(Entity):
                     self._state = self.data.data["temps"][0]["a"]["h"]
                 else:
                     self._state = "-"
-                self._name = self.data.data["temps"][0]["n"] + " High"
+                self._name = self.data.data["temps"][0]["n"] + " Alarm: High"
             if self.type == 'probe0_lo':
                 P0LO = self.data.data["temps"][0]["a"]["l"]
                 if P0LO > 0:
                     self._state = self.data.data["temps"][0]["a"]["l"]
                 else:
                     self._state = "-"
-                self._name = self.data.data["temps"][0]["n"] + " Low"
+                self._name = self.data.data["temps"][0]["n"] + " Alarm: Low"
             if self.type == 'probe1_temperature':
                 self._state = self.data.data["temps"][1]["c"]
                 self._name = self.data.data["temps"][1]["n"]
@@ -228,14 +228,14 @@ class HeaterMeterSensor(Entity):
                     self._state = self.data.data["temps"][1]["a"]["h"]
                 else:
                     self._state = "-"
-                self._name = self.data.data["temps"][1]["n"] + " High"
+                self._name = self.data.data["temps"][1]["n"] + " Alarm: High"
             if self.type == 'probe1_lo':
                 P1LO = self.data.data["temps"][1]["a"]["l"]
                 if P1LO > 0:
                     self._state = self.data.data["temps"][1]["a"]["l"]
                 else:
                     self._state = "-"
-                self._name = self.data.data["temps"][1]["n"] + " Low"
+                self._name = self.data.data["temps"][1]["n"] + " Alarm: Low"
             if self.type == 'probe2_temperature':
                 self._state = self.data.data["temps"][2]["c"]
                 self._name = self.data.data["temps"][2]["n"]
@@ -245,14 +245,14 @@ class HeaterMeterSensor(Entity):
                     self._state = self.data.data["temps"][2]["a"]["h"]
                 else:
                     self._state = "-"
-                self._name = self.data.data["temps"][2]["n"] + " High"
+                self._name = self.data.data["temps"][2]["n"] + " Alarm: High"
             if self.type == 'probe2_lo':
                 P2LO = self.data.data["temps"][2]["a"]["l"]
                 if P2LO > 0:
                     self._state = self.data.data["temps"][2]["a"]["l"]
                 else:
                     self._state = "-"
-                self._name = self.data.data["temps"][2]["n"] + " Low"
+                self._name = self.data.data["temps"][2]["n"] + " Alarm: Low"
             if self.type == 'probe3_temperature':
                 self._state = self.data.data["temps"][3]["c"]
                 self._name = self.data.data["temps"][3]["n"]
@@ -262,11 +262,11 @@ class HeaterMeterSensor(Entity):
                     self._state = self.data.data["temps"][3]["a"]["h"]
                 else:
                     self._state = "-"
-                self._name = self.data.data["temps"][3]["n"] + " High"
+                self._name = self.data.data["temps"][3]["n"] + " Alarm: High"
             if self.type == 'probe3_lo':
                 P3LO = self.data.data["temps"][3]["a"]["l"]
                 if P3LO > 0:
                     self._state = self.data.data["temps"][3]["a"]["l"]
                 else:
                     self._state = "-"
-                self._name = self.data.data["temps"][3]["n"] + " Low"
+                self._name = self.data.data["temps"][3]["n"] + " Alarm: Low"
