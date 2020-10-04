@@ -3,4 +3,10 @@ set_temperature:
   fields:
     temperature: 
       description: 'New setpoint temperature'
-      example: 'temperature: 225'
+      example: '225'
+set_alarms:
+  description: Set smoker alarms.
+  fields:
+    alarms: 
+      description: 'New alarm temperatures'
+      example: '-190,-250,-100,-205,-100,-100,-100,-100'
