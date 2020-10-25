@@ -2,12 +2,9 @@
 HeaterMeter smoker controller integration for HA.
 
 Changes from idomp version:
-<<<<<<< HEAD
-=======
 - Added High/Low Alarm Sensors for each probe.
 - Added 'set_alarms' service to set probe alarms.
 - Fixed Issue #1 'Fill Example Data inserts parameter twice', removed parameter from service example.
->>>>>>> origin/dev
 - Temperature units automatically set based on 'Unit System' setting in 'Configuration\General'.
 - Removed username and password configuration options, use api_key instead.
 - Added an Alarm sensor that changes to 'on' when any probe's Alarm/Ring value is set to a non-null value.
@@ -22,11 +19,8 @@ Changes from idomp version:
 
 ToDo:
 - [ ] Implement scan_interval.
-<<<<<<< HEAD
 - [X] Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option. ~~or read it from the HeaterMeter config.~~
-=======
 - [X] Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option. or read it from the HeaterMeter config.
->>>>>>> origin/dev
 - [ ] Home Assistant Discovery
 - [X] Individual probe Hi/Lo alarms.
 - [ ] Create service to enable/disable 'Ramp' mode.
