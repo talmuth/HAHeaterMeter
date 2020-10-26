@@ -20,7 +20,6 @@ Changes from idomp version:
 ToDo:
 - [ ] Implement scan_interval.
 - [X] Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option. ~~or read it from the HeaterMeter config.~~
-- [X] Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option. or read it from the HeaterMeter config.
 - [ ] Home Assistant Discovery
 - [X] Individual probe Hi/Lo alarms.
 - [ ] Create service to enable/disable 'Ramp' mode.

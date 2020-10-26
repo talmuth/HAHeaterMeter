@@ -34,11 +34,6 @@ SENSOR_TYPES = {
     'fan': ['Fan', '%', 'mdi:fan'],
     'alarm': ['Alarm', '', 'mdi:alert'],
     'probe0_temperature': ['Pit Temperature', '', 'mdi:thermometer'],
-<<<<<<< HEAD
-    'probe1_temperature': ['Probe1 Temperature', '', 'mdi:thermometer'],
-    'probe2_temperature': ['Probe2 Temperature', '', 'mdi:thermometer'],
-    'probe3_temperature': ['Probe3 Temperature', '', 'mdi:thermometer']
-=======
     'probe0_hi': ['Pit High', '', 'mdi:thermometer'],
     'probe0_lo': ['Pit Low', '', 'mdi:thermometer'],
     'probe1_temperature': ['Probe1 Temperature', '', 'mdi:thermometer'],
@@ -50,7 +45,6 @@ SENSOR_TYPES = {
     'probe3_temperature': ['Probe3 Temperature', '', 'mdi:thermometer'],
     'probe3_hi': ['Probe3 High', '', 'mdi:thermometer'],
     'probe3_lo': ['Probe3 Low', '', 'mdi:thermometer']
->>>>>>> origin/dev
 }
 
 def setup_platform(hass, config, add_entities, discovery_info=None):
@@ -73,11 +67,6 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     # Set Temperature Units based on global system settings
     SENSOR_TYPES['setpoint'][1]             = TEMP_UNITS
     SENSOR_TYPES['probe0_temperature'][1]   = TEMP_UNITS
-<<<<<<< HEAD
-    SENSOR_TYPES['probe1_temperature'][1]   = TEMP_UNITS
-    SENSOR_TYPES['probe2_temperature'][1]   = TEMP_UNITS
-    SENSOR_TYPES['probe3_temperature'][1]   = TEMP_UNITS
-=======
     SENSOR_TYPES['probe0_hi'][1]            = TEMP_UNITS
     SENSOR_TYPES['probe0_lo'][1]            = TEMP_UNITS
     SENSOR_TYPES['probe1_temperature'][1]   = TEMP_UNITS
@@ -89,7 +78,6 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     SENSOR_TYPES['probe3_temperature'][1]   = TEMP_UNITS
     SENSOR_TYPES['probe3_hi'][1]            = TEMP_UNITS
     SENSOR_TYPES['probe3_lo'][1]            = TEMP_UNITS
->>>>>>> origin/dev
 
     try:
         data = HeaterMeterData(host, port)
