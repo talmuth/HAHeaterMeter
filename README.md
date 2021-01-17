@@ -54,6 +54,7 @@ Changes from idomp version:
 ![Mobile App Cards](docs/mobile-app-card-view.png)  
 [:top:](#bookmark_tabs-table-of-contents)
 <br/>
+<br/>
 
 ## Getting started
 * Copy the 'heatermeter' folder to the Home Assistant config/custom_components/ directory.  
