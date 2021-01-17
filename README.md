@@ -37,7 +37,7 @@ Changes from idomp version:
 	- [scripts.yaml](#scriptsyaml)
 	- [ui-lovelace.yaml](#ui-lovelaceyaml)
 - [References](#references)
-</br>
+<br/>
 
 ## :camera: Screenshots
 
@@ -53,13 +53,14 @@ Changes from idomp version:
 ### Mobile App Cards
 ![Mobile App Cards](docs/mobile-app-card-view.png)  
 [:top:](#bookmark_tabs-table-of-contents)
-</br>
+<br/>
 
 ## Getting started
 * Copy the 'heatermeter' folder to the Home Assistant config/custom_components/ directory.  
 
 [:top:](#bookmark_tabs-table-of-contents)
-</br>
+<br/>
+<br/>
 
 ## Home Assistant Examples
 ### configuration.yaml
@@ -360,7 +361,7 @@ heatermeter_set_alarms:
         type: entities
 ```  
 [:top:](#bookmark_tabs-table-of-contents)
-</br>
+<br/>
 
 ## References
 Support for reading HeaterMeter data. See https://github.com/CapnBry/HeaterMeter/wiki/Accessing-Raw-Data-Remotely
