@@ -50,12 +50,12 @@ ToDo:
 
 ### Mobile App Cards
 ![Mobile App Cards](docs/mobile-app-card-view.png)  
-[:bookmark_tabs:](#bookmark_tabs-table-of-contents)
+[:top:](#bookmark_tabs-table-of-contents)
 
 ## Getting started
 
 * Copy the 'heatermeter' folder to the Home Assistant config/custom_components/ directory.  
-[:bookmark_tabs:](#bookmark_tabs-table-of-contents)
+[:top:](#bookmark_tabs-table-of-contents)
 
 ## Home Assistant Examples
 
@@ -150,7 +150,7 @@ input_number:
     unit_of_measurement: "°F"
     icon: mdi:target
 ```  
-[:bookmark_tabs:](#bookmark_tabs-table-of-contents)
+[:top:](#bookmark_tabs-table-of-contents)
 
 ### automation.yaml
 ```
@@ -173,7 +173,7 @@ input_number:
     service: notify.mobile_app_<YourPhone>
   mode: single
 ```  
-[:bookmark_tabs:](#bookmark_tabs-table-of-contents)
+[:top:](#bookmark_tabs-table-of-contents)
 
 ### scripts.yaml
 ```
@@ -277,7 +277,7 @@ heatermeter_set_alarms:
       alarms: '{{ states("input_number.probe0_lo") }},{{ states("input_number.probe0_hi") }},{{ states("input_number.probe1_lo") }},{{ states("input_number.probe1_hi") }}",{{ states("input_number.probe2_lo") }},{{ states("input_number.probe2_hi") }},{{ states("input_number.probe3_lo") }},{{ states("input_number.probe3_hi") }}'
   mode: single
 ```  
-[:bookmark_tabs:](#bookmark_tabs-table-of-contents)
+[:top:](#bookmark_tabs-table-of-contents)
 
 ### ui-lovelace.yaml
 ```
@@ -356,9 +356,9 @@ heatermeter_set_alarms:
         title: Alarms
         type: entities
 ```  
-[:bookmark_tabs:](#bookmark_tabs-table-of-contents)
+[:top:](#bookmark_tabs-table-of-contents)
 
 ### References
 Support for reading HeaterMeter data. See https://github.com/CapnBry/HeaterMeter/wiki/Accessing-Raw-Data-Remotely
 Home Assistant HeaterMeter integration forum post. https://community.home-assistant.io/t/heatermeter-integration/14696/22  
-[:bookmark_tabs:](#bookmark_tabs-table-of-contents)
+[:top:](#bookmark_tabs-table-of-contents)
