@@ -130,7 +130,7 @@ ui-lovelace.yaml
 
 ### Lovelace Cards
 
-![Lovelace Cards](docs/lovelace-cards-02.png)
+![Lovelace Cards](docs/lovelace-cards.png)
 
 ### HeaterMeter Reference Image
 ![HeaterMeter Reference](docs/heatermeter-reference.png)
