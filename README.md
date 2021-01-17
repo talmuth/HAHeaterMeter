@@ -26,11 +26,31 @@ ToDo:
 - [X] Individual probe Hi/Lo alarms.
 - [ ] Create service to enable/disable 'Ramp' mode.
 
-[Screenshots](#camera-screenshots)
+### Table of Contents
+- [Screenshots](#camera-screenshots)
+- [Getting Started](#getting-started)
+- [Example YAML](#home-assistant-examples)
+- [References](#references)
+
+## :camera: Screenshots
+
+### Lovelace Cards
+
+![Lovelace Cards](docs/lovelace-cards-03.png)
+
+### HeaterMeter Reference Image
+![HeaterMeter Reference](docs/heatermeter-reference.png)
+
+### Mobile App Notification
+![Mobile App Notification](docs/mobile-app-notification.png)
+
+### Mobile App Cards
+![Mobile App Cards](docs/mobile-app-card-view.png)
 
 ### Getting started
 
 * Copy the 'heatermeter' folder to the Home Assistant config/custom_components/ directory.
+
 
 #### Home Assistant Examples
 
@@ -330,21 +350,6 @@ ui-lovelace.yaml
         title: Alarms
         type: entities
 ```
-
-## :camera: Screenshots
-
-### Lovelace Cards
-
-![Lovelace Cards](docs/lovelace-cards-03.png)
-
-### HeaterMeter Reference Image
-![HeaterMeter Reference](docs/heatermeter-reference.png)
-
-### Mobile App Notification
-![Mobile App Notification](docs/mobile-app-notification.png)
-
-### Mobile App Cards
-![Mobile App Cards](docs/mobile-app-card-view.png)
 
 
 ### References
