@@ -26,7 +26,7 @@ ToDo:
 - [X] Individual probe Hi/Lo alarms.
 - [ ] Create service to enable/disable 'Ramp' mode.
 
-## Table of Contents
+## :bookmark_tabs: Table of Contents
 - [Screenshots](#camera-screenshots)
 - [Getting Started](#getting-started)
 - [Example YAML](#home-assistant-examples)
