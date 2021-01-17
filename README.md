@@ -45,10 +45,82 @@ input_number:
   setpoint:
     name: Setpoint
     initial: 225
-    min: 100
-    max: 400
+    min:  100
+    max:  400
     step: 1   
     mode: slider
+    unit_of_measurement: "°F"
+    icon: mdi:target
+  probe0_hi:
+    name: Probe0 Hi
+    initial: 275
+    min: -400
+    max: 400
+    step: 1
+    mode: box
+    unit_of_measurement: "°F"
+    icon: mdi:target
+  probe0_lo:
+    name: Probe0 Lo
+    initial: -200
+    min: -400
+    max: 400
+    step: 1   
+    mode: box
+    unit_of_measurement: "°F"
+    icon: mdi:target
+  probe1_hi:
+    name: Probe1 Hi
+    initial: -200
+    min: -400
+    max: 400
+    step: 1   
+    mode: box
+    unit_of_measurement: "°F"
+    icon: mdi:target
+  probe1_lo:
+    name: Probe1 Lo
+    initial: -1
+    min: -400
+    max: 400
+    step: 1   
+    mode: box
+    unit_of_measurement: "°F"
+    icon: mdi:target
+  probe2_hi:
+    name: Probe2 Hi
+    initial: -200
+    min: -400
+    max: 400
+    step: 1   
+    mode: box
+    unit_of_measurement: "°F"
+    icon: mdi:target
+  probe2_lo:
+    name: Probe2 Lo
+    initial: -1
+    min: -400
+    max: 400
+    step: 1   
+    mode: box
+    unit_of_measurement: "°F"
+    icon: mdi:target
+  probe3_hi:
+    name: Probe3 Hi
+    initial: -200
+    min: -400
+    max: 400
+    step: 1   
+    mode: box
+    unit_of_measurement: "°F"
+    icon: mdi:target
+  probe3_lo:
+    name: Probe3 Lo
+    initial: -1
+    min: -400
+    max: 400
+    step: 1   
+    mode: box
     unit_of_measurement: "°F"
     icon: mdi:target
 ```
