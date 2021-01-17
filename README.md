@@ -30,10 +30,10 @@ ToDo:
 - [Screenshots](#camera-screenshots)
 - [Getting Started](#getting-started)
 - [Example YAML](#home-assistant-examples)
-	 - [configuration.yaml](#configurationyaml)
-	 - [automatio.yaml](#automationyaml)
-  - [script.yaml](#scriptyaml)
-  - [ui-lovelace.yaml](#ui-lovelaceyaml)
+	- [configuration.yaml](#configurationyaml)
+	- [automation.yaml](#automationyaml)
+	- [scripts.yaml](#scriptsyaml)
+	- [ui-lovelace.yaml](#ui-lovelaceyaml)
 - [References](#references)
 
 ## :camera: Screenshots
