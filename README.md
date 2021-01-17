@@ -2,6 +2,8 @@
 HeaterMeter smoker controller integration for HA.
 
 Changes from idomp version:
+- Added 'heatermeter.set_alarms' and 'heatermeter.set_temperature' scripts for setting & refreshing alarms.
+- Added 'Alarms' card to ui-lovalace.yaml.
 - Added High/Low Alarm Sensors for each probe.
 - Added 'set_alarms' service to set probe alarms.
 - Fixed Issue #1 'Fill Example Data inserts parameter twice', removed parameter from service example.
@@ -84,56 +86,96 @@ heatermeter_change_set_point:
   - data_template:
       temperature: '{{ states.input_number.setpoint.state|int }}'
     service: heatermeter.set_temperature
+heatermeter_change_set_point:
+  alias: HeaterMeter Change Set Point
+  icon: mdi:target
+  mode: single
+  sequence:
+  - data_template:
+      temperature: '{{ states.input_number.setpoint.state|int }}'
+    service: heatermeter.set_temperature
+update_heatermeter_input_numbers:
+  alias: Update HeaterMeter Input Numbers
+  sequence:
+  - service: input_number.set_value
+    data_template:
+      value:
+        '{% if states("heatermeter.probe0_hi") == "-" %}
+          {{ -1 | int }}
+        {% else %}
+          {{ states("heatermeter.probe0_hi") | int }}
+        {% endif %}'
+    entity_id: input_number.probe0_hi
+  - service: input_number.set_value
+    data_template:
+      value:
+        '{% if states("heatermeter.probe0_lo") == "-" %}
+          {{ -1 | int }}
+        {% else %}
+          {{ states("heatermeter.probe0_lo") | int }}
+        {% endif %}'
+    entity_id: input_number.probe0_lo
+  - service: input_number.set_value
+    data_template:
+      value:
+        '{% if states("heatermeter.probe1_hi") == "-" %}
+          {{ -1 | int }}
+        {% else %}
+          {{ states("heatermeter.probe1_hi") | int }}
+        {% endif %}'
+    entity_id: input_number.probe1_hi
+  - service: input_number.set_value
+    data_template:
+      value:
+        '{% if states("heatermeter.probe1_lo") == "-" %}
+          {{ -1 | int }}
+        {% else %}
+          {{ states("heatermeter.probe1_lo") | int }}
+        {% endif %}'
+    entity_id: input_number.probe1_lo
+  - service: input_number.set_value
+    data_template:
+      value:
+        '{% if states("heatermeter.probe2_hi") == "-" %}
+          {{ -1 | int }}
+        {% else %}
+          {{ states("heatermeter.probe2_hi") | int }}
+        {% endif %}'
+    entity_id: input_number.probe2_hi
+  - service: input_number.set_value
+    data_template:
+      value:
+        '{% if states("heatermeter.probe2_lo") == "-" %}
+          {{ -1 | int }}
+        {% else %}
+          {{ states("heatermeter.probe2_lo") | int }}
+        {% endif %}'
+    entity_id: input_number.probe2_lo
+  - service: input_number.set_value
+    data_template:
+      value:
+        '{% if states("heatermeter.probe3_hi") == "-" %}
+          {{ -1 | int }}
+        {% else %}
+          {{ states("heatermeter.probe3_hi") | int }}
+        {% endif %}'
+    entity_id: input_number.probe3_hi
+  - service: input_number.set_value
+    data_template:
+      value: 
+        '{% if states("heatermeter.probe3_lo") == "-" %}
+          {{ -1 | int }}
+        {% else %}
+          {{ states("heatermeter.probe3_lo") | int }}
+        {% endif %}'
+    entity_id: input_number.probe3_lo
+  mode: single
 heatermeter_set_alarms:
   alias: HeaterMeter Set Alarms
   sequence:
   - service: heatermeter.set_alarms
     data_template:
       alarms: '{{ states("input_number.probe0_lo") }},{{ states("input_number.probe0_hi") }},{{ states("input_number.probe1_lo") }},{{ states("input_number.probe1_hi") }}",{{ states("input_number.probe2_lo") }},{{ states("input_number.probe2_hi") }},{{ states("input_number.probe3_lo") }},{{ states("input_number.probe3_hi") }}'
-  mode: single
-update_heatermeter_input_numbers:
-  alias: Update HeaterMeter Input Numbers
-  sequence:
-  - service: input_number.set_value
-    data_template:
-      value: '{% if states("heatermeter.probe0_hi") == "-" %} {{ -1 | int }} {% else
-        %} {{ states("heatermeter.probe0_hi") | int }} {% endif %}'
-    entity_id: input_number.probe0_hi
-  - service: input_number.set_value
-    data_template:
-      value: '{% if states("heatermeter.probe0_lo") == "-" %} {{ -1 | int }} {% else
-        %} {{ states("heatermeter.probe0_lo") | int }} {% endif %}'
-    entity_id: input_number.probe0_lo
-  - service: input_number.set_value
-    data_template:
-      value: '{% if states("heatermeter.probe1_hi") == "-" %} {{ -1 | int }} {% else
-        %} {{ states("heatermeter.probe1_hi") | int }} {% endif %}'
-    entity_id: input_number.probe1_hi
-  - service: input_number.set_value
-    data_template:
-      value: '{% if states("heatermeter.probe1_lo") == "-" %} {{ -1 | int }} {% else
-        %} {{ states("heatermeter.probe1_lo") | int }} {% endif %}'
-    entity_id: input_number.probe1_lo
-  - service: input_number.set_value
-    data_template:
-      value: '{% if states("heatermeter.probe2_hi") == "-" %} {{ -1 | int }} {% else
-        %} {{ states("heatermeter.probe2_hi") | int }} {% endif %}'
-    entity_id: input_number.probe2_hi
-  - service: input_number.set_value
-    data_template:
-      value: '{% if states("heatermeter.probe2_lo") == "-" %} {{ -1 | int }} {% else
-        %} {{ states("heatermeter.probe2_lo") | int }} {% endif %}'
-    entity_id: input_number.probe2_lo
-  - service: input_number.set_value
-    data_template:
-      value: '{% if states("heatermeter.probe3_hi") == "-" %} {{ -1 | int }} {% else
-        %} {{ states("heatermeter.probe3_hi") | int }} {% endif %}'
-    entity_id: input_number.probe3_hi
-  - service: input_number.set_value
-    data_template:
-      value: '{% if states("heatermeter.probe3_lo") == "-" %} {{ -1 | int }} {% else
-        %} {{ states("heatermeter.probe3_lo") | int }} {% endif %}'
-    entity_id: input_number.probe3_lo
   mode: single
 ```
 ```
@@ -175,6 +217,44 @@ ui-lovelace.yaml
         hours_to_show: 18
         refresh_interval: 10
         type: history-graph
+      - entities:
+          - action_name: Refresh
+            icon: 'mdi:refresh'
+            name: ' '
+            service: script.update_heatermeter_input_numbers
+            type: call-service
+          - type: section
+            label: Pit
+          - entity: input_number.probe0_hi
+            name: 'Hi:'
+          - entity: input_number.probe0_lo
+            name: 'Lo:'
+          - type: section
+            label: Food-1
+          - entity: input_number.probe1_hi
+            name: 'Hi:'
+          - entity: input_number.probe1_lo
+            name: 'Lo:'
+          - type: section
+            label: Food-2
+          - entity: input_number.probe2_hi
+            name: 'Hi:'
+          - entity: input_number.probe2_lo
+            name: 'Lo:'
+          - type: section
+            label: Ambient
+          - entity: input_number.probe3_hi
+            name: 'Hi:'
+          - entity: input_number.probe3_lo
+            name: 'Lo:'
+          - type: section
+          - action_name: Set
+            icon: 'mdi:blank'
+            name: ' '
+            service: script.heatermeter_set_alarms
+            type: call-service
+        title: Alarms
+        type: entities
 ```
 
 ## :camera: Screenshots
