@@ -59,7 +59,7 @@ ToDo:
 
 ## Home Assistant Examples
 
-### configuration.yaml  .markdown-preview.markdown-preview { p, ul, ol {font-size: 1.2em;} }[:top:](#bookmark_tabs-table-of-contents)
+### configuration.yaml
 ```
 heatermeter:
   api_key: <API Key from HeaterMeter>
@@ -152,7 +152,7 @@ input_number:
 ```  
 [:top:](#bookmark_tabs-table-of-contents)
 
-### automation.yaml  [:top:](#bookmark_tabs-table-of-contents)
+### automation.yaml
 ```
 - id: 'heatermeter_push_notification'
   alias: HeaterMeter Push Notification
