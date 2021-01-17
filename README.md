@@ -26,7 +26,7 @@ ToDo:
 - [X] Individual probe Hi/Lo alarms.
 - [ ] Create service to enable/disable 'Ramp' mode.
 
-[Screenshots](## :camera: Screenshots)
+[Screenshots](##camera-screenshots)
 
 ### Getting started
 
