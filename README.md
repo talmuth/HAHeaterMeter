@@ -26,15 +26,19 @@ ToDo:
 - [X] Individual probe Hi/Lo alarms.
 - [ ] Create service to enable/disable 'Ramp' mode.
 
-### Table of Contents
+## Table of Contents
 - [Screenshots](#camera-screenshots)
 - [Getting Started](#getting-started)
 - [Example YAML](#home-assistant-examples)
+ - [configuration.yaml](#configuration.yaml)
+ - [configuration.yaml](#configuration.yaml)
+ - [configuration.yaml](#configuration.yaml)
+ - [configuration.yaml](#configuration.yaml)
 - [References](#references)
 
 ## :camera: Screenshots
 
-### Lovelace Cards
+## Lovelace Cards
 
 ![Lovelace Cards](docs/lovelace-cards-03.png)
 
@@ -47,16 +51,15 @@ ToDo:
 ### Mobile App Cards
 ![Mobile App Cards](docs/mobile-app-card-view.png)
 
-### Getting started
+## Getting started
 
 * Copy the 'heatermeter' folder to the Home Assistant config/custom_components/ directory.
 
 
-#### Home Assistant Examples
+## Home Assistant Examples
 
+### configuration.yaml
 ```
-configuration.yaml
-
 heatermeter:
   api_key: <API Key from HeaterMeter>
   host: <Hostname or IP of HeaterMeter>
@@ -146,9 +149,9 @@ input_number:
     unit_of_measurement: "°F"
     icon: mdi:target
 ```
-```
-automation.yaml
 
+### automation.yaml
+```
 - id: 'heatermeter_push_notification'
   alias: HeaterMeter Push Notification
   description: ''
@@ -169,9 +172,9 @@ automation.yaml
   mode: single
 
 ```
-```
-scripts.yaml
 
+### scripts.yaml
+```
 heatermeter_change_set_point:
   alias: HeaterMeter Change Set Point
   icon: mdi:target
@@ -272,9 +275,9 @@ heatermeter_set_alarms:
       alarms: '{{ states("input_number.probe0_lo") }},{{ states("input_number.probe0_hi") }},{{ states("input_number.probe1_lo") }},{{ states("input_number.probe1_hi") }}",{{ states("input_number.probe2_lo") }},{{ states("input_number.probe2_hi") }},{{ states("input_number.probe3_lo") }},{{ states("input_number.probe3_hi") }}'
   mode: single
 ```
-```
-ui-lovelace.yaml
 
+### ui-lovelace.yaml
+```
   - icon: 'mdi:grill'
     path: heater-meter
     title: Heater Meter
@@ -350,7 +353,6 @@ ui-lovelace.yaml
         title: Alarms
         type: entities
 ```
-
 
 ### References
 Support for reading HeaterMeter data. See https://github.com/CapnBry/HeaterMeter/wiki/Accessing-Raw-Data-Remotely
