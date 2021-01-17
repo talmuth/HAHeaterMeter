@@ -18,16 +18,16 @@ Changes from idomp version:
 - Lovelace Card Updates:
   * Now includes a card for setting the Set Point with a slider and 'Set' button.
   * Added history graph for the fan.
+<br/>
 
-</br>
 ## :heavy_check_mark: ToDo:
 - [ ] Implement scan_interval.
 - [X] Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option. ~~or read it from the HeaterMeter config.~~
 - [ ] Home Assistant Discovery
 - [X] Individual probe Hi/Lo alarms.
 - [ ] Create service to enable/disable 'Ramp' mode.
+<br/>
 
-</br>
 ## :bookmark_tabs: Table of Contents
 - [Screenshots](#camera-screenshots)
 - [Getting Started](#getting-started)
@@ -37,8 +37,8 @@ Changes from idomp version:
 	- [scripts.yaml](#scriptsyaml)
 	- [ui-lovelace.yaml](#ui-lovelaceyaml)
 - [References](#references)
-
 </br>
+
 ## :camera: Screenshots
 
 ## Lovelace Cards
@@ -53,15 +53,14 @@ Changes from idomp version:
 ### Mobile App Cards
 ![Mobile App Cards](docs/mobile-app-card-view.png)  
 [:top:](#bookmark_tabs-table-of-contents)
-
 </br>
-## Getting started
 
+## Getting started
 * Copy the 'heatermeter' folder to the Home Assistant config/custom_components/ directory.  
 
 [:top:](#bookmark_tabs-table-of-contents)
-
 </br>
+
 ## Home Assistant Examples
 ### configuration.yaml
 ```
@@ -361,8 +360,8 @@ heatermeter_set_alarms:
         type: entities
 ```  
 [:top:](#bookmark_tabs-table-of-contents)
-
 </br>
+
 ## References
 Support for reading HeaterMeter data. See https://github.com/CapnBry/HeaterMeter/wiki/Accessing-Raw-Data-Remotely
 Home Assistant HeaterMeter integration forum post. https://community.home-assistant.io/t/heatermeter-integration/14696/22  
