@@ -52,15 +52,14 @@ ToDo:
 ![Mobile App Cards](docs/mobile-app-card-view.png)  
 [:top:](#bookmark_tabs-table-of-contents)
 
-## Getting started
+## Getting started  [:top:](#bookmark_tabs-table-of-contents)
 
 * Copy the 'heatermeter' folder to the Home Assistant config/custom_components/ directory.  
 
-[:top:](#bookmark_tabs-table-of-contents)
 
 ## Home Assistant Examples
 
-### configuration.yaml
+### configuration.yaml  [:top:](#bookmark_tabs-table-of-contents)
 ```
 heatermeter:
   api_key: <API Key from HeaterMeter>
@@ -153,7 +152,7 @@ input_number:
 ```  
 [:top:](#bookmark_tabs-table-of-contents)
 
-### automation.yaml
+### automation.yaml  [:top:](#bookmark_tabs-table-of-contents)
 ```
 - id: 'heatermeter_push_notification'
   alias: HeaterMeter Push Notification
