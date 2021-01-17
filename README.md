@@ -19,7 +19,7 @@ Changes from idomp version:
   * Now includes a card for setting the Set Point with a slider and 'Set' button.
   * Added history graph for the fan.
 
-ToDo:
+## :heavy_check_mark: ToDo:
 - [ ] Implement scan_interval.
 - [X] Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option. ~~or read it from the HeaterMeter config.~~
 - [ ] Home Assistant Discovery
@@ -360,7 +360,7 @@ heatermeter_set_alarms:
 ```  
 [:top:](#bookmark_tabs-table-of-contents)
 
-### References
+## References
 Support for reading HeaterMeter data. See https://github.com/CapnBry/HeaterMeter/wiki/Accessing-Raw-Data-Remotely
 Home Assistant HeaterMeter integration forum post. https://community.home-assistant.io/t/heatermeter-integration/14696/22  
 [:top:](#bookmark_tabs-table-of-contents)
