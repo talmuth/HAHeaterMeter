@@ -59,7 +59,7 @@ ToDo:
 
 ## Home Assistant Examples
 
-### configuration.yaml  [:top:](#bookmark_tabs-table-of-contents)
+### configuration.yaml  .markdown-preview.markdown-preview { p, ul, ol {font-size: 1.2em;} }[:top:](#bookmark_tabs-table-of-contents)
 ```
 heatermeter:
   api_key: <API Key from HeaterMeter>
