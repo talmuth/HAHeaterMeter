@@ -26,6 +26,8 @@ ToDo:
 - [X] Individual probe Hi/Lo alarms.
 - [ ] Create service to enable/disable 'Ramp' mode.
 
+[Screenshots](## :camera: Screenshots)
+
 ### Getting started
 
 * Copy the 'heatermeter' folder to the Home Assistant config/custom_components/ directory.
