@@ -52,9 +52,10 @@ ToDo:
 ![Mobile App Cards](docs/mobile-app-card-view.png)  
 [:top:](#bookmark_tabs-table-of-contents)
 
-## Getting started  [:top:](#bookmark_tabs-table-of-contents)
+## Getting started
 
-* Copy the 'heatermeter' folder to the Home Assistant config/custom_components/ directory.  
+* Copy the 'heatermeter' folder to the Home Assistant config/custom_components/ directory.</br>
+[:top:](#bookmark_tabs-table-of-contents)
 
 
 ## Home Assistant Examples
