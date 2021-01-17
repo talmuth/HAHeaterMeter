@@ -84,6 +84,57 @@ heatermeter_change_set_point:
   - data_template:
       temperature: '{{ states.input_number.setpoint.state|int }}'
     service: heatermeter.set_temperature
+heatermeter_set_alarms:
+  alias: HeaterMeter Set Alarms
+  sequence:
+  - service: heatermeter.set_alarms
+    data_template:
+      alarms: '{{ states("input_number.probe0_hi") }},{{ states("input_number.probe0_lo") }},{{ states("input_number.probe1_hi") }},{{ states("input_number.probe1_lo") }}",{{ states("input_number.probe2_hi") }},{{ states("input_number.probe2_lo") }},{{ states("input_number.probe3_hi") }},{{ states("input_number.probe3_lo") }}'
+  mode: single
+update_heatermeter_input_numbers:
+  alias: Update HeaterMeter Input Numbers
+  sequence:
+  - service: input_number.set_value
+    data_template:
+      value: '{% if states("heatermeter.probe0_hi") == "-" %} {{ -1 | int }} {% else
+        %} {{ states("heatermeter.probe0_hi") | int }} {% endif %}'
+    entity_id: input_number.probe0_hi
+  - service: input_number.set_value
+    data_template:
+      value: '{% if states("heatermeter.probe0_lo") == "-" %} {{ -1 | int }} {% else
+        %} {{ states("heatermeter.probe0_lo") | int }} {% endif %}'
+    entity_id: input_number.probe0_lo
+  - service: input_number.set_value
+    data_template:
+      value: '{% if states("heatermeter.probe1_hi") == "-" %} {{ -1 | int }} {% else
+        %} {{ states("heatermeter.probe1_hi") | int }} {% endif %}'
+    entity_id: input_number.probe1_hi
+  - service: input_number.set_value
+    data_template:
+      value: '{% if states("heatermeter.probe1_lo") == "-" %} {{ -1 | int }} {% else
+        %} {{ states("heatermeter.probe1_lo") | int }} {% endif %}'
+    entity_id: input_number.probe1_lo
+  - service: input_number.set_value
+    data_template:
+      value: '{% if states("heatermeter.probe2_hi") == "-" %} {{ -1 | int }} {% else
+        %} {{ states("heatermeter.probe2_hi") | int }} {% endif %}'
+    entity_id: input_number.probe2_hi
+  - service: input_number.set_value
+    data_template:
+      value: '{% if states("heatermeter.probe2_lo") == "-" %} {{ -1 | int }} {% else
+        %} {{ states("heatermeter.probe2_lo") | int }} {% endif %}'
+    entity_id: input_number.probe2_lo
+  - service: input_number.set_value
+    data_template:
+      value: '{% if states("heatermeter.probe3_hi") == "-" %} {{ -1 | int }} {% else
+        %} {{ states("heatermeter.probe3_hi") | int }} {% endif %}'
+    entity_id: input_number.probe3_hi
+  - service: input_number.set_value
+    data_template:
+      value: '{% if states("heatermeter.probe3_lo") == "-" %} {{ -1 | int }} {% else
+        %} {{ states("heatermeter.probe3_lo") | int }} {% endif %}'
+    entity_id: input_number.probe3_lo
+  mode: single
 ```
 ```
 ui-lovelace.yaml
