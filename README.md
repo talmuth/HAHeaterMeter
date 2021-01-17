@@ -89,7 +89,7 @@ heatermeter_set_alarms:
   sequence:
   - service: heatermeter.set_alarms
     data_template:
-      alarms: '{{ states("input_number.probe0_hi") }},{{ states("input_number.probe0_lo") }},{{ states("input_number.probe1_hi") }},{{ states("input_number.probe1_lo") }}",{{ states("input_number.probe2_hi") }},{{ states("input_number.probe2_lo") }},{{ states("input_number.probe3_hi") }},{{ states("input_number.probe3_lo") }}'
+      alarms: '{{ states("input_number.probe0_lo") }},{{ states("input_number.probe0_hi") }},{{ states("input_number.probe1_lo") }},{{ states("input_number.probe1_hi") }}",{{ states("input_number.probe2_lo") }},{{ states("input_number.probe2_hi") }},{{ states("input_number.probe3_lo") }},{{ states("input_number.probe3_hi") }}'
   mode: single
 update_heatermeter_input_numbers:
   alias: Update HeaterMeter Input Numbers
