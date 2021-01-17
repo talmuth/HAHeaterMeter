@@ -50,11 +50,12 @@ ToDo:
 
 ### Mobile App Cards
 ![Mobile App Cards](docs/mobile-app-card-view.png)
+[Back](#table-of-contents)
 
 ## Getting started
 
 * Copy the 'heatermeter' folder to the Home Assistant config/custom_components/ directory.
-
+[Back](#table-of-contents)
 
 ## Home Assistant Examples
 
@@ -149,6 +150,7 @@ input_number:
     unit_of_measurement: "°F"
     icon: mdi:target
 ```
+[Back](#table-of-contents)
 
 ### automation.yaml
 ```
@@ -170,8 +172,8 @@ input_number:
       message: HeaterMeter Alarm
     service: notify.mobile_app_<YourPhone>
   mode: single
-
 ```
+[Back](#table-of-contents)
 
 ### scripts.yaml
 ```
@@ -275,6 +277,7 @@ heatermeter_set_alarms:
       alarms: '{{ states("input_number.probe0_lo") }},{{ states("input_number.probe0_hi") }},{{ states("input_number.probe1_lo") }},{{ states("input_number.probe1_hi") }}",{{ states("input_number.probe2_lo") }},{{ states("input_number.probe2_hi") }},{{ states("input_number.probe3_lo") }},{{ states("input_number.probe3_hi") }}'
   mode: single
 ```
+[Back](#table-of-contents)
 
 ### ui-lovelace.yaml
 ```
@@ -353,6 +356,7 @@ heatermeter_set_alarms:
         title: Alarms
         type: entities
 ```
+[Back](#table-of-contents)
 
 ### References
 Support for reading HeaterMeter data. See https://github.com/CapnBry/HeaterMeter/wiki/Accessing-Raw-Data-Remotely
