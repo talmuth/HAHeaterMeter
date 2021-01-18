@@ -4,6 +4,7 @@ HeaterMeter smoker controller integration for HA.
 Changes from idomp version:
 - Added 'heatermeter.set_alarms' and 'heatermeter.set_temperature' scripts for setting & refreshing alarms.
 - Added 'Alarms' card to ui-lovalace.yaml.
+- Added 'automation.bbq_is_ready' automation to announce when your food is ready.
 - Added High/Low Alarm Sensors for each probe.
 - Added 'set_alarms' service to set probe alarms.
 - Fixed Issue #1 'Fill Example Data inserts parameter twice', removed parameter from service example.
@@ -177,7 +178,26 @@ input_number:
       message: HeaterMeter Alarm
     service: notify.mobile_app_<YourPhone>
   mode: single
+- id: 'bbq_is_ready'
+  alias: BBQ is Ready
+  description: ''
+  trigger:
+  - platform: template
+    value_template: '{% if states(''heatermeter.probe1_temperature'') | int > states(''heatermeter.probe1_hi'') | int -1 %} true {% endif %}'
+  condition:
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: heatermeter.probe1_temperature
+      state: Unknown
+  action:
+  - service: tts.google_translate_say
+    entity_id: media_player.living_room_speaker
+    data:
+      message: Your food is ready to come off the barbeque
+  mode: single
 ```  
+Please note that 'tts.google_translate_say' service must be configured for this automation to work and you should change the 'entity_id' to your desired media_player.
 [:top:](#bookmark_tabs-table-of-contents)
 
 ### scripts.yaml
