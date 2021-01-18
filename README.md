@@ -22,6 +22,7 @@ Changes from idomp version:
 <br/>
 
 ## :heavy_check_mark: ToDo:
+- [ ] Figure out how to stop the integration from spamming the logs when the HeaterMeter is offline.
 - [ ] Implement scan_interval.
 - [X] Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option. ~~or read it from the HeaterMeter config.~~
 - [ ] Home Assistant Discovery
