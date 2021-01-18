@@ -198,7 +198,7 @@ input_number:
       message: Your food is ready to come off the barbeque
   mode: single
 ```  
-Please note that 'tts.google_translate_say' service must be configured for the 'bbq_is_ready' automation to work and you should change the 'entity_id' to your desired media_player.  
+Please note that the 'tts.google_translate_say' service must be configured for the 'bbq_is_ready' automation to work and you should change the 'entity_id' to your desired media_player.  
 [:top:](#bookmark_tabs-table-of-contents)
 
 ### scripts.yaml
