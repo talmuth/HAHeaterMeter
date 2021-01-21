@@ -2,7 +2,8 @@
 HeaterMeter smoker controller integration for HA.
 
 Changes from idomp version:
-- Added 'Update HeaterMeter Alarms' automation (Contributed by Chris8837)
+- Added 'Update HeaterMeter Alarms' automation (Contributed by Chris8837).
+- Removed Refresh button from Alarms card (not needed with the sync alarms automation).
 - Added 'heatermeter.set_alarms' and 'heatermeter.set_temperature' scripts for setting & refreshing alarms.
 - Added 'Alarms' card to ui-lovalace.yaml.
 - Added 'automation.bbq_is_ready' automation to announce when your food is ready.
@@ -371,11 +372,6 @@ heatermeter_set_alarms:
         refresh_interval: 10
         type: history-graph
       - entities:
-          - action_name: Refresh
-            icon: 'mdi:refresh'
-            name: ' '
-            service: script.update_heatermeter_input_numbers
-            type: call-service
           - type: section
             label: Pit
           - entity: input_number.probe0_hi
