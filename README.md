@@ -355,8 +355,11 @@ heatermeter_set_alarms:
           - entity: heatermeter.fan
           - entity: heatermeter.probe0_temperature
           - entity: heatermeter.probe1_temperature
+            name: Food-1 Temperature
           - entity: heatermeter.probe2_temperature
+	    name: Food-2 Temperature
           - entity: heatermeter.probe3_temperature
+	    name: Ambient Temperature
           - entity: heatermeter.alarm
         show_header_toggle: false
         title: Smoker
