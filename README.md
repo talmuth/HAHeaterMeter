@@ -2,6 +2,7 @@
 HeaterMeter smoker controller integration for HA.
 
 Changes from idomp version:
+- Added 'Update HeaterMeter Alarms' automation (Contributed by Chris8837)
 - Added 'heatermeter.set_alarms' and 'heatermeter.set_temperature' scripts for setting & refreshing alarms.
 - Added 'Alarms' card to ui-lovalace.yaml.
 - Added 'automation.bbq_is_ready' automation to announce when your food is ready.
@@ -196,6 +197,32 @@ input_number:
     entity_id: media_player.living_room_speaker
     data:
       message: Your food is ready to come off the barbeque
+  mode: single
+- id: 'heatermeter_sync_alarm_values'
+  alias: Update Heatermeater (No/Therm) Alarms
+  description: Sync alarm values between HeaterMeter and Home Assistant.
+  trigger:
+  - platform: state
+    entity_id: heatermeter.probe0_hi
+  - platform: state
+    entity_id: heatermeter.probe0_lo
+  - platform: state
+    entity_id: heatermeter.probe1_hi
+  - platform: state
+    entity_id: heatermeter.probe1_lo
+  - platform: state
+    entity_id: heatermeter.probe2_hi
+  - platform: state
+    entity_id: heatermeter.probe2_lo
+  - platform: state
+    entity_id: heatermeter.probe3_hi
+  - platform: state
+    entity_id: heatermeter.probe3_lo
+  condition: []
+  action:
+  - service: script.turn_on
+    data:
+      entity_id: script.update_heatermeter_input_numbers
   mode: single
 ```  
 Please note that the 'tts.google_translate_say' service must be configured for the 'bbq_is_ready' automation to work and you should change the 'entity_id' to your desired media_player.  
