@@ -186,7 +186,7 @@ input_number:
   description: ''
   trigger:
   - platform: template
-    value_template: '{% if states(''heatermeter.probe1_temperature'') | int > states(''heatermeter.probe1_hi'') | int -1 %} true {% endif %}'
+    value_template: '{% if states(''heatermeter.probe1_temperature'') | int(0) > states(''heatermeter.probe1_hi'') | int(0) -1 %} true {% endif %}'
   condition:
   - condition: not
     conditions:
@@ -237,15 +237,7 @@ heatermeter_change_set_point:
   mode: single
   sequence:
   - data_template:
-      temperature: '{{ states.input_number.setpoint.state|int }}'
-    service: heatermeter.set_temperature
-heatermeter_change_set_point:
-  alias: HeaterMeter Change Set Point
-  icon: mdi:target
-  mode: single
-  sequence:
-  - data_template:
-      temperature: '{{ states.input_number.setpoint.state|int }}'
+      temperature: '{{ states.input_number.setpoint.state|int(225) }}'
     service: heatermeter.set_temperature
 update_heatermeter_input_numbers:
   alias: Update HeaterMeter Input Numbers
@@ -254,72 +246,72 @@ update_heatermeter_input_numbers:
     data_template:
       value:
         '{% if states("heatermeter.probe0_hi") == "-" %}
-          {{ -1 | int }}
+          {{ -1 | int(-1) }}
         {% else %}
-          {{ states("heatermeter.probe0_hi") | int }}
+          {{ states("heatermeter.probe0_hi") | int(-1) }}
         {% endif %}'
     entity_id: input_number.probe0_hi
   - service: input_number.set_value
     data_template:
       value:
         '{% if states("heatermeter.probe0_lo") == "-" %}
-          {{ -1 | int }}
+          {{ -1 | int(-1) }}
         {% else %}
-          {{ states("heatermeter.probe0_lo") | int }}
+          {{ states("heatermeter.probe0_lo") | int(-1) }}
         {% endif %}'
     entity_id: input_number.probe0_lo
   - service: input_number.set_value
     data_template:
       value:
         '{% if states("heatermeter.probe1_hi") == "-" %}
-          {{ -1 | int }}
+          {{ -1 | int(-1) }}
         {% else %}
-          {{ states("heatermeter.probe1_hi") | int }}
+          {{ states("heatermeter.probe1_hi") | int(-1) }}
         {% endif %}'
     entity_id: input_number.probe1_hi
   - service: input_number.set_value
     data_template:
       value:
         '{% if states("heatermeter.probe1_lo") == "-" %}
-          {{ -1 | int }}
+          {{ -1 | int(-1) }}
         {% else %}
-          {{ states("heatermeter.probe1_lo") | int }}
+          {{ states("heatermeter.probe1_lo") | int(-1) }}
         {% endif %}'
     entity_id: input_number.probe1_lo
   - service: input_number.set_value
     data_template:
       value:
         '{% if states("heatermeter.probe2_hi") == "-" %}
-          {{ -1 | int }}
+          {{ -1 | int(-1) }}
         {% else %}
-          {{ states("heatermeter.probe2_hi") | int }}
+          {{ states("heatermeter.probe2_hi") | int(-1) }}
         {% endif %}'
     entity_id: input_number.probe2_hi
   - service: input_number.set_value
     data_template:
       value:
         '{% if states("heatermeter.probe2_lo") == "-" %}
-          {{ -1 | int }}
+          {{ -1 | int(-1) }}
         {% else %}
-          {{ states("heatermeter.probe2_lo") | int }}
+          {{ states("heatermeter.probe2_lo") | int(-1) }}
         {% endif %}'
     entity_id: input_number.probe2_lo
   - service: input_number.set_value
     data_template:
       value:
         '{% if states("heatermeter.probe3_hi") == "-" %}
-          {{ -1 | int }}
+          {{ -1 | int(-1) }}
         {% else %}
-          {{ states("heatermeter.probe3_hi") | int }}
+          {{ states("heatermeter.probe3_hi") | int(-1) }}
         {% endif %}'
     entity_id: input_number.probe3_hi
   - service: input_number.set_value
     data_template:
       value: 
         '{% if states("heatermeter.probe3_lo") == "-" %}
-          {{ -1 | int }}
+          {{ -1 | int(-1) }}
         {% else %}
-          {{ states("heatermeter.probe3_lo") | int }}
+          {{ states("heatermeter.probe3_lo") | int(-1) }}
         {% endif %}'
     entity_id: input_number.probe3_lo
   mode: single
