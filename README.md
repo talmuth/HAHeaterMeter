@@ -162,7 +162,8 @@ input_number:
 Notes:
 * Set api_key:
 * Set host:
-* Change 'unit_of_measurement' to match your unit system.<br/>
+* Change 'unit_of_measurement' to match your unit system.
+* Optionally, Input Numbers can be created in the UI under 'Configuration\Helpers'. Make sure the names match.<br/>
 [:top:](#bookmark_tabs-table-of-contents)
 <br/>
 
