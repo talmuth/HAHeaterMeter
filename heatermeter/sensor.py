@@ -123,7 +123,7 @@ class HeaterMeterData(object):
             response = requests.get(dataurl, timeout=5)
             self.data = response.json()
         except requests.exceptions.ConnectionError:
-            _LOGGER.error("HeaterMeter: No route to device %s", dataurl)
+            _LOGGER.warning("HeaterMeter: No route to device %s", dataurl)
             self.data = None
             self._backoff = dt_util.utcnow() + timedelta(seconds=60)
             
