@@ -69,7 +69,7 @@ Changes from idomp version:
 
 ## Home Assistant Examples
 ### configuration.yaml
-```
+```yaml
 heatermeter:
   api_key: <API Key from HeaterMeter>
   host: <Hostname or IP of HeaterMeter>
@@ -162,7 +162,7 @@ input_number:
 [:top:](#bookmark_tabs-table-of-contents)
 
 ### automation.yaml
-```
+```yaml
 - id: 'heatermeter_push_notification'
   alias: HeaterMeter Push Notification
   description: ''
@@ -230,7 +230,7 @@ Please note that the 'tts.google_translate_say' service must be configured for t
 [:top:](#bookmark_tabs-table-of-contents)
 
 ### scripts.yaml
-```
+```yaml
 heatermeter_change_set_point:
   alias: HeaterMeter Change Set Point
   icon: mdi:target
@@ -334,7 +334,7 @@ heatermeter_set_alarms:
 [:top:](#bookmark_tabs-table-of-contents)
 
 ### ui-lovelace.yaml
-```
+```yaml
   - icon: 'mdi:grill'
     path: heater-meter
     title: Heater Meter
@@ -357,9 +357,9 @@ heatermeter_set_alarms:
           - entity: heatermeter.probe1_temperature
             name: Food-1 Temperature
           - entity: heatermeter.probe2_temperature
-	    name: Food-2 Temperature
+            name: Food-2 Temperature
           - entity: heatermeter.probe3_temperature
-	    name: Ambient Temperature
+            name: Ambient Temperature
           - entity: heatermeter.alarm
         show_header_toggle: false
         title: Smoker
