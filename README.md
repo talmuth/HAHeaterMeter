@@ -160,6 +160,8 @@ input_number:
     icon: mdi:target
 ```  
 Notes:
+* Set api_key:
+* Set host:
 * Change 'unit_of_measurement' to match your unit system.<br/>
 [:top:](#bookmark_tabs-table-of-contents)
 <br/>
@@ -330,7 +332,7 @@ heatermeter_set_alarms:
   mode: single
 ```  
 Notes:
-* In the 'heatermeter_change_set_point' script, change the data_template: temperature int(225) to natch your desired default set point. (This shouldn't be necessary as long as the corresponding input_number has a value)<br/>
+* In the 'heatermeter_change_set_point' script, change the data_template: temperature int(225) to natch your desired default set point. (This shouldn't be necessary as long as the corresponding input_number 'initial' value has been set)<br/>
 [:top:](#bookmark_tabs-table-of-contents)
 <br/>
 
