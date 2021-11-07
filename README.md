@@ -159,7 +159,10 @@ input_number:
     unit_of_measurement: "°F"
     icon: mdi:target
 ```  
+Notes:
+* Change 'unit_of_measurement' to match your unit system.<br/>
 [:top:](#bookmark_tabs-table-of-contents)
+<br/>
 
 ### automation.yaml
 ```yaml
@@ -226,9 +229,12 @@ input_number:
       entity_id: script.update_heatermeter_input_numbers
   mode: single
 ```  
-Please note that the 'tts.google_translate_say' service must be configured for the 'bbq_is_ready' automation to work and you should change the 'entity_id' to your desired media_player.  
+Notes:
+* The 'tts.google_translate_say' service must be configured for the 'bbq_is_ready' automation to work and you should change the 'entity_id' to your desired media_player.
+* Change 'service: notify.mobile_app_\<YourPhone\>' to match your notification service.<br/>
 [:top:](#bookmark_tabs-table-of-contents)
-
+<br/>
+	
 ### scripts.yaml
 ```yaml
 heatermeter_change_set_point:
@@ -323,7 +329,10 @@ heatermeter_set_alarms:
       alarms: '{{ states("input_number.probe0_lo") }},{{ states("input_number.probe0_hi") }},{{ states("input_number.probe1_lo") }},{{ states("input_number.probe1_hi") }}",{{ states("input_number.probe2_lo") }},{{ states("input_number.probe2_hi") }},{{ states("input_number.probe3_lo") }},{{ states("input_number.probe3_hi") }}'
   mode: single
 ```  
+Notes:
+* In the 'heatermeter_change_set_point' script, change the data_template: temperature int(225) to natch your desired default set point. (This shouldn't be necessary as long as the corresponding input_number has a value)<br/>
 [:top:](#bookmark_tabs-table-of-contents)
+<br/>
 
 ### ui-lovelace.yaml
 ```yaml
