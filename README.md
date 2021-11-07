@@ -1,7 +1,7 @@
 # HeaterMeter smoker controller component for Home Assistant
 HeaterMeter smoker controller integration for HA.
 
-Changes from idomp version:
+## Changes:
 - Updated YAML to include default values for INT and FLOAT values in templates.
   - See [2021.10 Breaking Changes\Templates](https://www.home-assistant.io/blog/2021/10/06/release-202110/#breaking-changes)
 - Added 'Update HeaterMeter Alarms' automation (Contributed by Chris8837).
