@@ -57,11 +57,10 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
        
     host = hass.data[DOMAIN][CONF_HOST]
     port = hass.data[DOMAIN][CONF_PORT]
-    units = hass.config.units.name
 
     TEMP_UNITS = TEMP_CELSIUS
-
-    if units.lower() == "imperial":
+    
+    if hass.config.units is IMPERIAL_SYSTEM:
         TEMP_UNITS = TEMP_FAHRENHEIT
 
     # Set Temperature Units based on global system settings
