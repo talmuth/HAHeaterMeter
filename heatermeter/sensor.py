@@ -18,6 +18,7 @@ from homeassistant.const import (
     )
 from homeassistant.util import Throttle
 from homeassistant.helpers.entity import Entity
+from homeassistant.util.unit_system import US_CUSTOMARY_SYSTEM
 from . import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
@@ -60,7 +61,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 
     TEMP_UNITS = TEMP_CELSIUS
     
-    if hass.config.units is IMPERIAL_SYSTEM:
+    if hass.config.units is US_CUSTOMARY_SYSTEM:
         TEMP_UNITS = TEMP_FAHRENHEIT
 
     # Set Temperature Units based on global system settings
