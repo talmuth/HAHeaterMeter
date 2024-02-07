@@ -26,7 +26,7 @@ HeaterMeter smoker controller integration for HA.
 <br/>
 
 ## :heavy_check_mark: ToDo:
-- [ ] Stop the integration from spamming the logs when the HeaterMeter is offline.
+- [X] Stop the integration from spamming the logs when the HeaterMeter is offline. (Thanks spoetnik)
 - [ ] Implement scan_interval.
 - [X] Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option. ~~or read it from the HeaterMeter config.~~
 - [ ] Home Assistant Discovery
