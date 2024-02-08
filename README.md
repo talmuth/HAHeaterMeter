@@ -12,6 +12,7 @@ HeaterMeter smoker controller integration for HA.
   If you prefer the legacy -1 values to represent a disabled alarm, you can find an updated script in: "legacy_update_heatermeter_input_numbers.yaml"
 
 ## Changes:
+- Fixed depreciated constants (TEMP_CELSIUS/TEMP_FAHRENHEIT) to UnitOfTemperature (legacy constants to be removed in 2025.1)
 - Negative Alarm values are sync'd (rather than displaying -1).
 - Updated YAML to include default values for INT and FLOAT values in templates.
   - See [2021.10 Breaking Changes\Templates](https://www.home-assistant.io/blog/2021/10/06/release-202110/#breaking-changes)
@@ -223,21 +224,15 @@ Notes:
   description: Sync alarm values between HeaterMeter and Home Assistant.
   trigger:
   - platform: state
-    entity_id: heatermeter.probe0_hi
-  - platform: state
-    entity_id: heatermeter.probe0_lo
-  - platform: state
-    entity_id: heatermeter.probe1_hi
-  - platform: state
-    entity_id: heatermeter.probe1_lo
-  - platform: state
-    entity_id: heatermeter.probe2_hi
-  - platform: state
-    entity_id: heatermeter.probe2_lo
-  - platform: state
-    entity_id: heatermeter.probe3_hi
-  - platform: state
-    entity_id: heatermeter.probe3_lo
+    entity_id:
+    - heatermeter.probe0_hi
+    - heatermeter.probe0_lo
+    - heatermeter.probe1_hi
+    - heatermeter.probe1_lo
+    - heatermeter.probe2_hi
+    - heatermeter.probe2_lo
+    - heatermeter.probe3_hi
+    - heatermeter.probe3_lo
   - platform: state
     entity_id: heatermeter.setpoint
     from: unknown

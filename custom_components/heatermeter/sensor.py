@@ -9,17 +9,17 @@ from datetime import timedelta
 import homeassistant.util.dt as dt_util
 import voluptuous as vol
 
-from homeassistant.helpers.config_validation import (  # noqa
+from homeassistant.helpers.config_validation import (
     PLATFORM_SCHEMA, PLATFORM_SCHEMA_BASE)
 import homeassistant.helpers.config_validation as cv
 from homeassistant.const import (
-        CONF_HOST, CONF_PORT, CONF_API_KEY, CONF_SCAN_INTERVAL, 
-        CONF_RESOURCES, TEMP_CELSIUS, TEMP_FAHRENHEIT
+        CONF_HOST, CONF_PORT, CONF_API_KEY, CONF_SCAN_INTERVAL, CONF_RESOURCES
     )
 from homeassistant.util import Throttle
 from homeassistant.helpers.entity import Entity
 from homeassistant.util.unit_system import US_CUSTOMARY_SYSTEM
 from . import DOMAIN
+from homeassistant.const import UnitOfTemperature
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -60,10 +60,10 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     port = hass.data[DOMAIN][CONF_PORT]
 
     # Default to metric
-    TEMP_UNITS = TEMP_CELSIUS
+    TEMP_UNITS = UnitOfTemperature.CELSIUS
 
     if hass.config.units is US_CUSTOMARY_SYSTEM:
-        TEMP_UNITS = TEMP_FAHRENHEIT
+        TEMP_UNITS = UnitOfTemperature.FAHRENHEIT
 
     # Set Temperature Units based on global system settings
     SENSOR_TYPES['setpoint'][1]             = TEMP_UNITS
