@@ -238,6 +238,9 @@ Notes:
     entity_id: heatermeter.probe3_hi
   - platform: state
     entity_id: heatermeter.probe3_lo
+  - platform: state
+    entity_id: heatermeter.setpoint
+    from: unknown
   condition: []
   action:
   - service: script.turn_on
