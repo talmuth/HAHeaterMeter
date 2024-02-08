@@ -59,8 +59,9 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     host = hass.data[DOMAIN][CONF_HOST]
     port = hass.data[DOMAIN][CONF_PORT]
 
+    # Default to metric
     TEMP_UNITS = TEMP_CELSIUS
-    
+
     if hass.config.units is US_CUSTOMARY_SYSTEM:
         TEMP_UNITS = TEMP_FAHRENHEIT
 
@@ -159,15 +160,6 @@ class HeaterMeterSensor(Entity):
         """Return the state of the sensor."""
         return self._state
 
-    # @property
-    # def state_attributes(self):
-    # #def device_state_attributes(self):
-    #     """Return the state attributes of the GPS."""
-    #     return {
-    #         ATTR_HI: "HI",
-    #         ATTR_LO: "LO",
-    #     }
-
     @property
     def unit_of_measurement(self):
         """Return the unit of measurement of this entity, if any."""
@@ -176,9 +168,7 @@ class HeaterMeterSensor(Entity):
     def update(self):
         """Get the latest data and use it to update our sensor state."""
         self.data.update()
-        #_LOGGER.debug("HeaterMeter: SensorData = %s", self.data.data)
-        #_LOGGER.debug("HeaterMeter: type = %s", self.type)
-        
+
         if self.data.data == None:
             self._state = "Unknown"
         else:
@@ -206,67 +196,35 @@ class HeaterMeterSensor(Entity):
                 self._state = self.data.data["temps"][0]["c"]
                 self._name = self.data.data["temps"][0]["n"]
             if self.type == 'probe0_hi':
-                P0HI = self.data.data["temps"][0]["a"]["h"]
-                if P0HI > 0:
-                    self._state = self.data.data["temps"][0]["a"]["h"]
-                else:
-                    self._state = "-"
+                self._state = self.data.data["temps"][0]["a"]["h"]
                 self._name = self.data.data["temps"][0]["n"] + " Alarm: High"
             if self.type == 'probe0_lo':
-                P0LO = self.data.data["temps"][0]["a"]["l"]
-                if P0LO > 0:
-                    self._state = self.data.data["temps"][0]["a"]["l"]
-                else:
-                    self._state = "-"
+                self._state = self.data.data["temps"][0]["a"]["l"]
                 self._name = self.data.data["temps"][0]["n"] + " Alarm: Low"
             if self.type == 'probe1_temperature':
                 self._state = self.data.data["temps"][1]["c"]
                 self._name = self.data.data["temps"][1]["n"]
             if self.type == 'probe1_hi':
-                P1HI = self.data.data["temps"][1]["a"]["h"]
-                if P1HI > 0:
-                    self._state = self.data.data["temps"][1]["a"]["h"]
-                else:
-                    self._state = "-"
+                self._state = self.data.data["temps"][1]["a"]["h"]
                 self._name = self.data.data["temps"][1]["n"] + " Alarm: High"
             if self.type == 'probe1_lo':
-                P1LO = self.data.data["temps"][1]["a"]["l"]
-                if P1LO > 0:
-                    self._state = self.data.data["temps"][1]["a"]["l"]
-                else:
-                    self._state = "-"
+                self._state = self.data.data["temps"][1]["a"]["l"]
                 self._name = self.data.data["temps"][1]["n"] + " Alarm: Low"
             if self.type == 'probe2_temperature':
                 self._state = self.data.data["temps"][2]["c"]
                 self._name = self.data.data["temps"][2]["n"]
             if self.type == 'probe2_hi':
-                P2HI = self.data.data["temps"][2]["a"]["h"]
-                if P2HI > 0:
-                    self._state = self.data.data["temps"][2]["a"]["h"]
-                else:
-                    self._state = "-"
+                self._state = self.data.data["temps"][2]["a"]["h"]
                 self._name = self.data.data["temps"][2]["n"] + " Alarm: High"
             if self.type == 'probe2_lo':
-                P2LO = self.data.data["temps"][2]["a"]["l"]
-                if P2LO > 0:
-                    self._state = self.data.data["temps"][2]["a"]["l"]
-                else:
-                    self._state = "-"
+                self._state = self.data.data["temps"][2]["a"]["l"]
                 self._name = self.data.data["temps"][2]["n"] + " Alarm: Low"
             if self.type == 'probe3_temperature':
                 self._state = self.data.data["temps"][3]["c"]
                 self._name = self.data.data["temps"][3]["n"]
             if self.type == 'probe3_hi':
-                P3HI = self.data.data["temps"][3]["a"]["h"]
-                if P3HI > 0:
-                    self._state = self.data.data["temps"][3]["a"]["h"]
-                else:
-                    self._state = "-"
+                self._state = self.data.data["temps"][3]["a"]["h"]
                 self._name = self.data.data["temps"][3]["n"] + " Alarm: High"
             if self.type == 'probe3_lo':
-                P3LO = self.data.data["temps"][3]["a"]["l"]
-                if P3LO > 0:
-                    self._state = self.data.data["temps"][3]["a"]["l"]
-                else:
-                    self._state = "-"
+                self._state = self.data.data["temps"][3]["a"]["l"]
                 self._name = self.data.data["temps"][3]["n"] + " Alarm: Low"

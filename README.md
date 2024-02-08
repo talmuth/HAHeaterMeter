@@ -1,6 +1,16 @@
 # HeaterMeter smoker controller component for Home Assistant
 HeaterMeter smoker controller integration for HA.
 
+## BREAKING CHANGES:
+- The sensor previously reported "-" when an alarm was disabled, and the "update_heatermeter_input_numbers" script
+  would update the alarm values in the UI to "-1". I've changed this behavior, and now the senor values match
+  what is in heatermeter. You will need to update your "update_heatermeter_input_numbers" script accordingly. I've
+  updated the example in the [scripts.yaml](#scriptsyaml) section of this readme. The benefit to this is that
+  those values in heatermeter survive a reboot, so if you always use the same alarm values, you can save them
+  and just toggle them on/off by making the number negative.
+  Example: Probe1 Alarm = 203, to disable the alarm (but retain the value) you can set it to -203.
+  If you prefer the legacy -1 values to represent a disabled alarm, you can find an updated script in: "legacy_update_heatermeter_input_numbers.yaml"
+
 ## Changes:
 - Updated YAML to include default values for INT and FLOAT values in templates.
   - See [2021.10 Breaking Changes\Templates](https://www.home-assistant.io/blog/2021/10/06/release-202110/#breaking-changes)
@@ -23,6 +33,7 @@ HeaterMeter smoker controller integration for HA.
 - Lovelace Card Updates:
   * Now includes a card for setting the Set Point with a slider and 'Set' button.
   * Added history graph for the fan.
+- Negative Alarm values are sync'd (rather than displaying -1).
 <br/>
 
 ## :heavy_check_mark: ToDo:
@@ -31,8 +42,7 @@ HeaterMeter smoker controller integration for HA.
 - [X] Make TEMP_FAHRENHEIT / TEMP_CELSIUS a user configurable option. ~~or read it from the HeaterMeter config.~~
 - [ ] Home Assistant Discovery
 - [X] Individual probe Hi/Lo alarms.
-- [ ] Create service to enable/disable 'Ramp' mode.
-- [ ] Replace depreciated constants (TEMP_CELSIUS, TEMP_FAHRENHEIT) before HA Core 2025.1
+- [ ] ~~Create service to enable/disable 'Ramp' mode.~~ (HeaterMeter API doesn't support this)
 <br/>
 
 ## :bookmark_tabs: Table of Contents
@@ -256,75 +266,35 @@ update_heatermeter_input_numbers:
   sequence:
   - service: input_number.set_value
     data_template:
-      value:
-        '{% if states("heatermeter.probe0_hi") == "-" %}
-          {{ -1 | int(-1) }}
-        {% else %}
-          {{ states("heatermeter.probe0_hi") | int(-1) }}
-        {% endif %}'
+      value: '{{ states("heatermeter.probe0_hi") | int(-1) }}'
     entity_id: input_number.probe0_hi
   - service: input_number.set_value
     data_template:
-      value:
-        '{% if states("heatermeter.probe0_lo") == "-" %}
-          {{ -1 | int(-1) }}
-        {% else %}
-          {{ states("heatermeter.probe0_lo") | int(-1) }}
-        {% endif %}'
+      value: '{{ states("heatermeter.probe0_lo") | int(-1) }}'
     entity_id: input_number.probe0_lo
   - service: input_number.set_value
     data_template:
-      value:
-        '{% if states("heatermeter.probe1_hi") == "-" %}
-          {{ -1 | int(-1) }}
-        {% else %}
-          {{ states("heatermeter.probe1_hi") | int(-1) }}
-        {% endif %}'
+      value: '{{ states("heatermeter.probe1_hi") | int(-1) }}'
     entity_id: input_number.probe1_hi
   - service: input_number.set_value
     data_template:
-      value:
-        '{% if states("heatermeter.probe1_lo") == "-" %}
-          {{ -1 | int(-1) }}
-        {% else %}
-          {{ states("heatermeter.probe1_lo") | int(-1) }}
-        {% endif %}'
+      value: '{{ states("heatermeter.probe1_lo") | int(-1) }}'
     entity_id: input_number.probe1_lo
   - service: input_number.set_value
     data_template:
-      value:
-        '{% if states("heatermeter.probe2_hi") == "-" %}
-          {{ -1 | int(-1) }}
-        {% else %}
-          {{ states("heatermeter.probe2_hi") | int(-1) }}
-        {% endif %}'
+      value: '{{ states("heatermeter.probe2_hi") | int(-1) }}'
     entity_id: input_number.probe2_hi
   - service: input_number.set_value
     data_template:
-      value:
-        '{% if states("heatermeter.probe2_lo") == "-" %}
-          {{ -1 | int(-1) }}
-        {% else %}
-          {{ states("heatermeter.probe2_lo") | int(-1) }}
-        {% endif %}'
+      value: '{{ states("heatermeter.probe2_lo") | int(-1) }}'
     entity_id: input_number.probe2_lo
   - service: input_number.set_value
     data_template:
-      value:
-        '{% if states("heatermeter.probe3_hi") == "-" %}
-          {{ -1 | int(-1) }}
-        {% else %}
-          {{ states("heatermeter.probe3_hi") | int(-1) }}
-        {% endif %}'
+      value: '{{ states("heatermeter.probe3_hi") | int(-1) }}'
     entity_id: input_number.probe3_hi
   - service: input_number.set_value
     data_template:
-      value: 
-        '{% if states("heatermeter.probe3_lo") == "-" %}
-          {{ -1 | int(-1) }}
-        {% else %}
-          {{ states("heatermeter.probe3_lo") | int(-1) }}
-        {% endif %}'
+      value: '{{ states("heatermeter.probe3_lo") | int(-1) }}'
     entity_id: input_number.probe3_lo
   mode: single
 heatermeter_set_alarms:
