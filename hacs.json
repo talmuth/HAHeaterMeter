@@ -1,3 +1,4 @@
 {
-  "name": "HeaterMeter"
+  "name": "HeaterMeter",
+  "render_readme": true
 }

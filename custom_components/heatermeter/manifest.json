@@ -2,6 +2,7 @@
   "domain": "heatermeter",
   "name": "HeaterMeter BBQ Controller",
   "documentation": "https://github.com/ledhed-jgh/HAHeaterMeter",
+  "issue_tracker": "https://github.com/ledhed-jgh/HAHeaterMeter/issues",
   "dependencies": [],
   "codeowners": [],
   "requirements": [],
